@@ -32,7 +32,7 @@ public class PlayerController : Controller
         RaycastHit2D[] groundHits = Physics2D.BoxCastAll(position, Collider.size, 0.0f, Vector2.down, GroundCheckDistance, CollisionLayers);
         hits.AddRange(groundHits);
 
-        for (int i = 0; i<hits.Count; i++)
+        for (int i = 0; i < hits.Count; i++)
         {
             RaycastHit2D safetyHit = Physics2D.Linecast(position, hits[i].point, CollisionLayers);
             if (safetyHit.collider != null)
@@ -46,7 +46,7 @@ public class PlayerController : Controller
     {
         Vector2 vectorToPoint = hit.point - (Vector2)transform.position;
         vectorToPoint -= MathHelper.PointOnRectangle(vectorToPoint.normalized, Collider.size);
-        Vector3 movement = (Vector3)hit.normal * Vector2.Dot(hit.normal,vectorToPoint.normalized) * vectorToPoint.magnitude;
+        Vector3 movement = (Vector3)hit.normal * Vector2.Dot(hit.normal, vectorToPoint.normalized) * vectorToPoint.magnitude;
         if (Vector2.Dot(Velocity.normalized, vectorToPoint.normalized) > 0.0f)
             transform.position += movement;
 
