@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "States/AirState")]
-public class AirState : State    {
+[CreateAssetMenu(menuName = "States/JetpakState")]
+public class JetpackState : State
+{
 
     [Header("Movement")]
     public float FastFallingModifier = 2f;
     public float Acceleration;
     public float Friction;
-
-    public bool CanCancelJump;
+    public float jetPackMaxSpeed = 15.0f;
+    public float jetPackAcceleration;
+    [Header("Fuel")]
+    public float MaxJetPackFuel = 4f;
+    public float jetPackFuelCost = 0.25f;
+    public float jetPackFuelRegen = 0.15f;
 
     private PlayerController _controller;
     private Transform _transform { get { return _controller.transform; } }
@@ -23,28 +28,47 @@ public class AirState : State    {
     {
         _controller = (PlayerController)owner;
     }
+
+    public override void Enter()
+    {
+        
+    }
+
+    // Update is called once per frame
     public override void Update()
     {
-        if (Input.GetKey(KeyCode.J)&& _controller.GetState<GroundState>().currentFuel >= 0)
-        {
-            _controller.TransitionTo<JetpackState>();
-        }
-        _controller.GetState<GroundState>().UpdateJump();
         UpdateGravity();
-        RaycastHit2D[] hits = _controller.DetectHits();
-        CancelJump();
-        UpdateMovement();
-        UpdateNormalForce(hits);
-        _transform.Translate(_velocity * Time.deltaTime);
+        if (Input.GetKey(KeyCode.J))
+        {
+            if (_controller.GetState<GroundState>().currentFuel <= 0)
+            {
+                _controller.TransitionTo<AirState>();
+            }
+            //_controller.GetState<GroundState>().UpdateJetpack();
+            _controller.GetState<GroundState>().currentFuel -= jetPackFuelCost * Time.deltaTime;
+            Debug.Log(_controller.GetState<GroundState>().currentFuel);
+            RaycastHit2D[] hits = _controller.DetectHits();
+            //CancelJetpack();
+            UpdateNormalForce(hits);
+            UpdateMovement();
+            _transform.Translate(_velocity * Time.deltaTime);
+        }
+        else
+        {
+            _controller.TransitionTo<AirState>();
+        }
     }
+
     private void UpdateGravity()
     {
         float gravityModifier = _velocity.y < 0.0f ? FastFallingModifier : 1f;
         _velocity += Vector2.down * _controller.Gravity * gravityModifier * Time.deltaTime;
+
     }
+
     private void UpdateNormalForce(RaycastHit2D[] hits)
     {
-        
+
         if (hits.Length == 0) return; //Kollar om vi träffar nått
 
         _controller.SnapToHit(hits[0]);  //kollar om vi ska snappa till marken
@@ -61,6 +85,11 @@ public class AirState : State    {
 
     private void UpdateMovement()
     {
+        if (_controller.Velocity.y <= jetPackMaxSpeed)
+        {
+            _velocity += Vector2.up*jetPackAcceleration;
+        }
+
         float input = Input.GetAxisRaw("Horizontal");
         if (Mathf.Abs(input) > _controller.InputMagnitudeToMove)
         {
@@ -77,18 +106,7 @@ public class AirState : State    {
             Vector2 currentDirection = Vector2.right * MathHelper.Sign(_velocity.x);
             float horizontalVelocity = Vector2.Dot(_velocity.normalized, currentDirection) *
            _velocity.magnitude;
-           _velocity -= currentDirection * horizontalVelocity * Friction * Time.deltaTime;
+            _velocity -= currentDirection * horizontalVelocity * Friction * Time.deltaTime;
         }
     }
-
-
-    private void CancelJump()
-    {
-        float minJumpVelocity = _controller.GetState<GroundState>().JumpVelocity.Min;
-        if (_velocity.y < minJumpVelocity) CanCancelJump = false;
-        if (!CanCancelJump || Input.GetButton("Jump")) return;
-        CanCancelJump = false;
-        _controller.Velocity.y = minJumpVelocity;
-    }
-
 }

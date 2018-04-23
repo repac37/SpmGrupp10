@@ -42,9 +42,10 @@ public static class MathHelper
     {
         Vector2 halfSize = size * 0.5f;
         float radian = Mathf.Atan2(dirr.y, dirr.x);
+      
         float distanceX = Mathf.Abs(halfSize.x / Mathf.Cos(radian));
         float distanceY = Mathf.Abs(halfSize.y / Mathf.Sin(radian));
-
+     
         return dirr.normalized * Mathf.Min(distanceY, distanceX);
     }
 

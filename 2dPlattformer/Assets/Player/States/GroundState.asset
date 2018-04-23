@@ -8,18 +8,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05371c40d95d23f49b69b7336522ec51, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cc438db3530eea4a93a85cdb5bbc5b3, type: 3}
   m_Name: GroundState
   m_EditorClassIdentifier: 
-  MaxJumps: 2
   Acceleration: 100
-  Deceleration: 20
-  TurnModifier: 2
-  JumpVelocity:
-    Min: 0
-    Max: 15
-  InitialJumpDistance: 0.3
+  Deceleration: 40
+  TurnModifier: 10
+  MaxJumps: 1
+  InitialJumpDistance: 0.05
   JumpHeight:
-    Min: 2
+    Min: 3
     Max: 8
-  TimeToApexJump: 0.5
+  TimeToJumpApex: 0.9
+  JumpVelocity:
+    Min: 21
+    Max: 12
+  currentFuel: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Controller : MonoBehaviour
 {
+    
     [SerializeField] private State[] _states;
     private readonly Dictionary<Type, State> _stateDictionary = new Dictionary<Type, State>();
     public State CurrentState;
