@@ -77,14 +77,6 @@ public class GroundState : State {
 
     }
 
-
-
-    private void TransitionToAir()
-    {
-        _jumps--;
-        _controller.TransitionTo<AirState>();
-    }
-
     private void UpdateGravity()
     {
         _velocity += Vector2.down * _controller.Gravity * Time.deltaTime;
@@ -188,6 +180,13 @@ public class GroundState : State {
             TransitionToAir();
    
     }
+
+    private void TransitionToAir()
+    {
+        _jumps--;
+        _controller.TransitionTo<AirState>();
+    }
+
 
     public void UpdateJetpack()
     {

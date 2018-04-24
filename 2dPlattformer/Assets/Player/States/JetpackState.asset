@@ -11,15 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b940e556fc52446a10d6ab3f2aa87e, type: 3}
   m_Name: JetpackState
   m_EditorClassIdentifier: 
-  FastFallingModifier: 2
-  Acceleration: 50
-  Friction: 5
-  jetPackSpeed:
-    Min: 0
-    Max: 10
+  FastFallingModifier: 0
+  Acceleration: 100
+  Friction: 10
   jetPackAcceleration:
-    Min: 5
-    Max: 15
-  MaxJetPackFuel: 1
-  jetPackFuelCost: 1
+    Min: 2
+    Max: 30
+  MaxJetPackFuel: 0.5
+  jetPackFuelCost: 2
   jetPackFuelRegen: 1

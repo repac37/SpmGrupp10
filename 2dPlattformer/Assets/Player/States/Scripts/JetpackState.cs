@@ -12,7 +12,6 @@ public class JetpackState : State
     public float FastFallingModifier = 2f;
     public float Acceleration;
     public float Friction;
-    public MinMaxFloat jetPackSpeed;
     public MinMaxFloat jetPackAcceleration;
     [Header("Fuel")]
     public float MaxJetPackFuel = 4f;
@@ -34,7 +33,7 @@ public class JetpackState : State
     public override void Enter()
     {
         _transform.position += Vector3.up * _controller.GetState<GroundState>().InitialJumpDistance;
-        _controller.Velocity.y = jetPackAcceleration.Max;
+        _controller.Velocity.y = jetPackAcceleration.Min;
         _gravityTmp = _controller.Gravity;
         _controller.Gravity = 0;
     }
@@ -45,7 +44,7 @@ public class JetpackState : State
     {
     
         _jetpackTriggerButton = Input.GetAxis("LeftTrigger");
-       
+     
         if (_jetpackTriggerButton != 0)
         {
             if (_controller.GetState<GroundState>().currentFuel <= 0)
@@ -61,7 +60,7 @@ public class JetpackState : State
        
             UpdateNormalForce(hits);
             UpdateMovement();
-            _transform.Translate(_velocity * _jetpackTriggerButton * Time.deltaTime);
+            _transform.Translate(_velocity * Time.deltaTime);
         }
         else
         {
@@ -91,14 +90,12 @@ public class JetpackState : State
     private void UpdateMovement()
     {
         //float verticalInput = Input.GetAxisRaw("Vertical");
-       
+
         //if (verticalInput!=0)
         //{
         //    Vector2 delta = Vector2.up * (verticalInput == 0 ? 1 : verticalInput) * jetPackAcceleration.Max * _jetpackTriggerButton;
         //    _velocity = delta;
         //}
-        
-
 
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         if (Mathf.Abs(horizontalInput) > _controller.InputMagnitudeToMove)
@@ -118,6 +115,10 @@ public class JetpackState : State
            _velocity.magnitude;
             _velocity -= currentDirection * horizontalVelocity * Friction * Time.deltaTime;
         }
+
+
+        if (_velocity.y < jetPackAcceleration.Max)
+            _velocity += Vector2.up * _jetpackTriggerButton * jetPackAcceleration.Max;
     }
 
        public override void Exit()
