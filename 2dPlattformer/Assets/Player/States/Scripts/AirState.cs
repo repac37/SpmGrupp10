@@ -25,7 +25,8 @@ public class AirState : State    {
     }
     public override void Update()
     {
-        if (Input.GetKey(KeyCode.J)&& _controller.GetState<GroundState>().currentFuel >= 0)
+
+        if (Input.GetAxis("LeftTrigger") != 0 && _controller.GetState<GroundState>().currentFuel >= 0)
         {
             _controller.TransitionTo<JetpackState>();
         }
@@ -86,7 +87,7 @@ public class AirState : State    {
     {
         float minJumpVelocity = _controller.GetState<GroundState>().JumpVelocity.Min;
         if (_velocity.y < minJumpVelocity) CanCancelJump = false;
-        if (!CanCancelJump || Input.GetButton("Jump")) return;
+        if (!CanCancelJump || Input.GetButton("LeftBumper")) return;
         CanCancelJump = false;
         _controller.Velocity.y = minJumpVelocity;
     }

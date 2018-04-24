@@ -5,13 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "States/JetpakState")]
 public class JetpackState : State
 {
+    private float _gravityTmp; 
+    private float _jetpackTriggerButton;
 
     [Header("Movement")]
     public float FastFallingModifier = 2f;
     public float Acceleration;
     public float Friction;
-    public float jetPackMaxSpeed = 15.0f;
-    public float jetPackAcceleration;
+    public MinMaxFloat jetPackSpeed;
+    public MinMaxFloat jetPackAcceleration;
     [Header("Fuel")]
     public float MaxJetPackFuel = 4f;
     public float jetPackFuelCost = 0.25f;
@@ -31,27 +33,35 @@ public class JetpackState : State
 
     public override void Enter()
     {
-        
+        _transform.position += Vector3.up * _controller.GetState<GroundState>().InitialJumpDistance;
+        _controller.Velocity.y = jetPackAcceleration.Max;
+        _gravityTmp = _controller.Gravity;
+        _controller.Gravity = 0;
     }
+ 
 
     // Update is called once per frame
     public override void Update()
     {
-        UpdateGravity();
-        if (Input.GetKey(KeyCode.J))
+    
+        _jetpackTriggerButton = Input.GetAxis("LeftTrigger");
+       
+        if (_jetpackTriggerButton != 0)
         {
             if (_controller.GetState<GroundState>().currentFuel <= 0)
             {
                 _controller.TransitionTo<AirState>();
             }
+
             //_controller.GetState<GroundState>().UpdateJetpack();
             _controller.GetState<GroundState>().currentFuel -= jetPackFuelCost * Time.deltaTime;
             Debug.Log(_controller.GetState<GroundState>().currentFuel);
+
             RaycastHit2D[] hits = _controller.DetectHits();
-            //CancelJetpack();
+       
             UpdateNormalForce(hits);
             UpdateMovement();
-            _transform.Translate(_velocity * Time.deltaTime);
+            _transform.Translate(_velocity * _jetpackTriggerButton * Time.deltaTime);
         }
         else
         {
@@ -59,12 +69,7 @@ public class JetpackState : State
         }
     }
 
-    private void UpdateGravity()
-    {
-        float gravityModifier = _velocity.y < 0.0f ? FastFallingModifier : 1f;
-        _velocity += Vector2.down * _controller.Gravity * gravityModifier * Time.deltaTime;
 
-    }
 
     private void UpdateNormalForce(RaycastHit2D[] hits)
     {
@@ -85,21 +90,26 @@ public class JetpackState : State
 
     private void UpdateMovement()
     {
-        if (_controller.Velocity.y <= jetPackMaxSpeed)
-        {
-            _velocity += Vector2.up*jetPackAcceleration;
-        }
+        //float verticalInput = Input.GetAxisRaw("Vertical");
+       
+        //if (verticalInput!=0)
+        //{
+        //    Vector2 delta = Vector2.up * (verticalInput == 0 ? 1 : verticalInput) * jetPackAcceleration.Max * _jetpackTriggerButton;
+        //    _velocity = delta;
+        //}
+        
 
-        float input = Input.GetAxisRaw("Horizontal");
-        if (Mathf.Abs(input) > _controller.InputMagnitudeToMove)
+
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        if (Mathf.Abs(horizontalInput) > _controller.InputMagnitudeToMove)
         {
-            Vector2 delta = Vector2.right * input * Acceleration * Time.deltaTime;
+            Vector2 delta = Vector2.right * horizontalInput * Acceleration * Time.deltaTime;
             if (Mathf.Abs((_controller.Velocity + delta).x) < _controller.MaxSpeed ||
            Mathf.Abs(_velocity.x) > _controller.MaxSpeed && Vector2.Dot(_velocity.normalized, delta)
            < 0.0f)
                 _controller.Velocity += delta;
             else
-                _controller.Velocity.x = MathHelper.Sign(input) * _controller.MaxSpeed;
+                _controller.Velocity.x = MathHelper.Sign(horizontalInput) * _controller.MaxSpeed;
         }
         else
         {
@@ -108,5 +118,10 @@ public class JetpackState : State
            _velocity.magnitude;
             _velocity -= currentDirection * horizontalVelocity * Friction * Time.deltaTime;
         }
+    }
+
+       public override void Exit()
+    {
+        _controller.Gravity = _gravityTmp;
     }
 }

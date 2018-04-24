@@ -14,9 +14,12 @@ MonoBehaviour:
   FastFallingModifier: 2
   Acceleration: 50
   Friction: 5
-  jetPackMaxSpeed: 10
-  jetPackAcceleration: 0.3
-  MaxJetPackFuel: 2
+  jetPackSpeed:
+    Min: 0
+    Max: 10
+  jetPackAcceleration:
+    Min: 5
+    Max: 15
+  MaxJetPackFuel: 1
   jetPackFuelCost: 1
-  jetPackFuelRegen: 0.5
-  CanCancelJetpack: 0
+  jetPackFuelRegen: 1

@@ -12,7 +12,6 @@ public class GroundState : State {
     public float Acceleration;
     public float Deceleration;
     public float TurnModifier;
-
    
     [Header("Jumping")]
     public int MaxJumps = 2;
@@ -54,6 +53,7 @@ public class GroundState : State {
     public override void Enter()
     {
         _jumps = MaxJumps;
+       
     }
 
     public override void Update()
@@ -77,26 +77,12 @@ public class GroundState : State {
 
     }
 
-    private void UpdateFuel()
-    {
-        if (currentFuel <= _controller.GetState<JetpackState>().MaxJetPackFuel)
-         currentFuel += _controller.GetState<JetpackState>().jetPackFuelRegen* Time.deltaTime;
-    }
+
 
     private void TransitionToAir()
     {
         _jumps--;
         _controller.TransitionTo<AirState>();
-    }
-
-    private void TransitionToJetPack()
-    {
-        if (currentFuel > 1)
-        {
-            _transform.position += Vector3.up * InitialJumpDistance;
-            _controller.Velocity.y = JumpVelocity.Max;
-            _controller.TransitionTo<JetpackState>();
-        }
     }
 
     private void UpdateGravity()
@@ -194,7 +180,7 @@ public class GroundState : State {
 
     public void UpdateJump()
     {
-        if (!Input.GetButtonDown("Jump") || _jumps <= 0) return;
+        if (!Input.GetButtonDown("LeftBumper") || _jumps <= 0) return;
        
             _transform.position += Vector3.up * InitialJumpDistance;
             _controller.Velocity.y = JumpVelocity.Max;
@@ -205,8 +191,18 @@ public class GroundState : State {
 
     public void UpdateJetpack()
     {
-        if (!Input.GetKey(KeyCode.J)) return;
+        if (Input.GetAxis("LeftTrigger") == 0 || Input.GetKeyDown(KeyCode.J)) return;
         TransitionToJetPack();
+    }
+
+    private void TransitionToJetPack()
+    {
+            _controller.TransitionTo<JetpackState>();
+    }
+
+    private void UpdateFuel()
+    {
+        currentFuel = _controller.GetState<JetpackState>().MaxJetPackFuel;
     }
 
 }

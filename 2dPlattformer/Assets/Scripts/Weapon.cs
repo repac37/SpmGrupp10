@@ -33,14 +33,14 @@ public class Weapon : MonoBehaviour
     {
         if (fireRate == 0)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetAxis("RightTrigger") != 0)
             {
                 Shoot();
             }
         }
         else
         {
-            if (Input.GetButton("Fire1") && Time.time > timeToFire)
+            if (Input.GetAxis("RightTrigger")!=0 && Time.time > timeToFire)
             {
                 timeToFire = Time.time + 1 / fireRate;
                 Shoot();
@@ -50,15 +50,21 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
-        Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        float inputX = Input.GetAxis("HorizontalRightStick");
+        float inputY = Input.GetAxis("VerticalRightStick");
+
+        Vector2 direction = new Vector2(inputX, inputY);
+        direction.Normalize();
+
+        
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 100, whatToHit);
+        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, direction, 100, whatToHit);
         if (Time.time >= timeToSpawnEffect)
         {
             Effect();
             timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
         }
-        Debug.DrawLine(firePointPosition, (mousePosition - firePointPosition) * 100, Color.cyan);
+        Debug.DrawLine(firePointPosition, direction * 100, Color.cyan);
         if (hit.collider != null)
         {
             Debug.DrawLine(firePointPosition, hit.point, Color.red);

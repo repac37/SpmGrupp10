@@ -17,9 +17,9 @@ MonoBehaviour:
   MaxJumps: 1
   InitialJumpDistance: 0.05
   JumpHeight:
-    Min: 3
-    Max: 8
-  TimeToJumpApex: 0.9
+    Min: 2
+    Max: 6
+  TimeToJumpApex: 0.35
   JumpVelocity:
     Min: 21
     Max: 12
