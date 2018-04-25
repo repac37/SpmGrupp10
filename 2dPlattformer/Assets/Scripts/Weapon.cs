@@ -7,15 +7,21 @@ public class Weapon : MonoBehaviour
 
     public float fireRate = 0;
     public float damage = 10;
-    public LayerMask whatToHit;
+    public float ammo = 0;
 
-    public float effectSpawnRate = 10;
 
-    private float timeToSpawnEffect = 0;
     private float timeToFire = 0;
     private Transform firePoint;
 
     public Transform bulletTrailPrefab;
+
+    public GameObject armed;
+
+    //public LayerMask whatToHit;
+
+    //public float effectSpawnRate = 10;
+
+    // private float timeToSpawnEffect = 0;
 
 
     // Use this for initialization
@@ -31,50 +37,61 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fireRate == 0)
+        if (fireRate == 0 && ammo > 0)
         {
             if (Input.GetAxis("RightTrigger") != 0)
             {
-                Shoot();
+                ProjectileShoot();
             }
         }
         else
         {
-            if (Input.GetAxis("RightTrigger")!=0 && Time.time > timeToFire)
+            if (Input.GetAxis("RightTrigger")!=0 && Time.time > timeToFire && ammo > 0)
             {
                 timeToFire = Time.time + 1 / fireRate;
-                Shoot();
+                ProjectileShoot();
             }
         }
+
+        if (ammo == 0 && armed.GetComponentInParent<Armed>().selectedWeapon == 1)
+        {
+            ammo = 100;
+            armed.GetComponentInParent<Armed>().selectedWeapon = 0;
+        }
     }
 
-    void Shoot()
-    {
-        float inputX = Input.GetAxis("HorizontalRightStick");
-        float inputY = Input.GetAxis("VerticalRightStick");
+    //void Shoot()
+    //{
+    //    float inputX = Input.GetAxis("HorizontalRightStick");
+    //    float inputY = Input.GetAxis("VerticalRightStick");
 
-        Vector2 direction = new Vector2(inputX, inputY);
-        direction.Normalize();
+    //    Vector2 direction = new Vector2(inputX, inputY);
+    //    direction.Normalize();
 
         
-        Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, direction, 100, whatToHit);
-        if (Time.time >= timeToSpawnEffect)
-        {
-            Effect();
-            timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
-        }
-        Debug.DrawLine(firePointPosition, direction * 100, Color.cyan);
-        if (hit.collider != null)
-        {
-            Debug.DrawLine(firePointPosition, hit.point, Color.red);
-            Debug.Log("We hit " + hit.collider.name + " and did " + damage + " damage.");
-            Destroy(hit.collider.gameObject);
-        }
-    }
+    //    Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
+    //    RaycastHit2D hit = Physics2D.Raycast(firePointPosition, direction, 100, whatToHit);
+    //    if (Time.time >= timeToSpawnEffect)
+    //    {
+    //        Effect();
+    //        timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
+    //    }
+    //    Debug.DrawLine(firePointPosition, direction * 100, Color.cyan);
+    //    if (hit.collider != null)
+    //    {
+    //        Debug.DrawLine(firePointPosition, hit.point, Color.red);
+    //        Debug.Log("We hit " + hit.collider.name + " and did " + damage + " damage.");
+    //        Destroy(hit.collider.gameObject);
+    //    }
+    //}
 
-    void Effect()
+    void ProjectileShoot()
     {
         Instantiate(bulletTrailPrefab, firePoint.position, firePoint.rotation);
+
+        if (armed.GetComponentInParent<Armed>().selectedWeapon == 1)
+        {
+            ammo--;
+        }
     }
 }

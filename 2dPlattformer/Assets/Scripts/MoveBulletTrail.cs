@@ -18,9 +18,9 @@ public class MoveBulletTrail : MonoBehaviour {
         //Debug.Log("Player test!");
         if (other.gameObject.tag=="Player")
         {
-            PlayerVariables play = other.gameObject.GetComponent<PlayerVariables>();
+            //PlayerVariables play = other.gameObject.GetComponent<PlayerVariables>();
             Debug.Log("Player hit!");
-            play.Harm(5f);
+            //play.Harm(5f);
                 //getComponent<PlayerVariables>().Harm(damage);
             Destroy(gameObject);
 
