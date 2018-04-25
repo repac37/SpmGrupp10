@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Killzone
+  - Enemy
   layers:
   - Default
   - TransparentFX
