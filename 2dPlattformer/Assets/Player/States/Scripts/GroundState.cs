@@ -162,6 +162,7 @@ public class GroundState : State {
         if (_velocity.magnitude < MathHelper.FloatEpsilon ||
             MathHelper.Sign(newVelocity.x) != MathHelper.Sign(_velocity.x))
         {
+
             _velocity = Vector2.zero;
         }
         else
@@ -187,6 +188,8 @@ public class GroundState : State {
         _controller.TransitionTo<AirState>();
     }
 
+    private bool _fuelFull;
+    private float _timer = 0;
 
     public void UpdateJetpack()
     {
@@ -196,12 +199,24 @@ public class GroundState : State {
 
     private void TransitionToJetPack()
     {
-            _controller.TransitionTo<JetpackState>();
+        //_controller.TransitionTo<JetpackState>();
+        if (_timer <= 0)
+        {
+            _timer = .2f;
+            currentFuel = _controller.GetState<JetpackStilState>().MaxJetPackFuel;
+            _controller.TransitionTo<JetpackStilState>();
+        }
     }
 
     private void UpdateFuel()
     {
-        currentFuel = _controller.GetState<JetpackState>().MaxJetPackFuel;
+        
+        if(_timer >= 0)
+        { 
+            _timer -= .01f;
+            Debug.Log(_timer);
+        }
+
     }
 
 }

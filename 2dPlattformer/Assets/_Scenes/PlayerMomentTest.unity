@@ -120,6 +120,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114434350504986116, guid: d88cac455b43c7f488f8643a3b115488,
+        type: 2}
+      propertyPath: _states.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4057042969197016, guid: d88cac455b43c7f488f8643a3b115488, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -152,6 +157,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114434350504986116, guid: d88cac455b43c7f488f8643a3b115488,
+        type: 2}
+      propertyPath: _states.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: fa40cff8014d001439d313d9b1e5b4df,
+        type: 2}
+    - target: {fileID: 114434350504986116, guid: d88cac455b43c7f488f8643a3b115488,
+        type: 2}
+      propertyPath: InputMagnitudeToMove
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981050044221058, guid: d88cac455b43c7f488f8643a3b115488, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d88cac455b43c7f488f8643a3b115488, type: 2}
   m_IsPrefabParent: 0
@@ -174,7 +194,7 @@ GameObject:
   - component: {fileID: 1534296357}
   m_Layer: 8
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
