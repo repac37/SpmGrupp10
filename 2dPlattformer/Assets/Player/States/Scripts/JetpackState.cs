@@ -47,14 +47,13 @@ public class JetpackState : State
      
         if (_jetpackTriggerButton != 0)
         {
-            if (_controller.GetState<GroundState>().currentFuel <= 0)
+            if (_controller.GetState<JetpackStilState>().currentFuel <= 0)
             {
                 _controller.TransitionTo<AirState>();
             }
 
             //_controller.GetState<GroundState>().UpdateJetpack();
-            _controller.GetState<GroundState>().currentFuel -= jetPackFuelCost * Time.deltaTime;
-            Debug.Log(_controller.GetState<GroundState>().currentFuel);
+            _controller.GetState<JetpackStilState>().currentFuel -= jetPackFuelCost * Time.deltaTime;
 
             RaycastHit2D[] hits = _controller.DetectHits();
        

@@ -17,10 +17,10 @@ MonoBehaviour:
   MaxJumps: 1
   InitialJumpDistance: 0.05
   JumpHeight:
-    Min: 2
-    Max: 6
-  TimeToJumpApex: 0.35
+    Min: 0
+    Max: 10
+  TimeToJumpApex: 0.3
   JumpVelocity:
     Min: 21
     Max: 12
-  currentFuel: 0
+  reloadJetpack: 0.5

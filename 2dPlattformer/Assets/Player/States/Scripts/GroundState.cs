@@ -22,7 +22,8 @@ public class GroundState : State {
     public MinMaxFloat JumpVelocity; // bestäms av gravitation och TimeToJumpApex
 
     [Header("Jetpack")]
-    public float currentFuel;
+    public float reloadJetpack = 1f;
+    private float _JetpackCountDownTimer = 0;
 
     private int _jumps;
     private Vector2 _groundNormal;
@@ -58,7 +59,7 @@ public class GroundState : State {
 
     public override void Update()
     {
-        UpdateFuel();
+       
         UpdateGravity();
         RaycastHit2D[] hits = _controller.DetectHits(true);
         if (hits.Length == 0)
@@ -188,11 +189,9 @@ public class GroundState : State {
         _controller.TransitionTo<AirState>();
     }
 
-    private bool _fuelFull;
-    private float _timer = 0;
-
     public void UpdateJetpack()
     {
+        UpdateFuel();
         if (Input.GetAxis("LeftTrigger") == 0 || Input.GetKeyDown(KeyCode.J)) return;
         TransitionToJetPack();
     }
@@ -200,23 +199,21 @@ public class GroundState : State {
     private void TransitionToJetPack()
     {
         //_controller.TransitionTo<JetpackState>();
-        if (_timer <= 0)
+        if (_JetpackCountDownTimer <= 0)
         {
-            _timer = .2f;
-            currentFuel = _controller.GetState<JetpackStilState>().MaxJetPackFuel;
+            _JetpackCountDownTimer = reloadJetpack;
+            _controller.GetState<JetpackStilState>().currentFuel = _controller.GetState<JetpackStilState>().MaxJetPackFuel;
             _controller.TransitionTo<JetpackStilState>();
         }
     }
 
     private void UpdateFuel()
     {
-        
-        if(_timer >= 0)
-        { 
-            _timer -= .01f;
-            Debug.Log(_timer);
+        if(_JetpackCountDownTimer >= 0)
+        {
+            _JetpackCountDownTimer -= 1f * Time.deltaTime;
+           
         }
-
     }
 
 }

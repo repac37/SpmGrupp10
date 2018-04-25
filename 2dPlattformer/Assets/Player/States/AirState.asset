@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ab3676f78a9894a81d4cef6dea5e46, type: 3}
   m_Name: AirState
   m_EditorClassIdentifier: 
-  FastFallingModifier: 1
+  FastFallingModifier: 0.5
   Acceleration: 40
   Friction: 10
   CanCancelJump: 0

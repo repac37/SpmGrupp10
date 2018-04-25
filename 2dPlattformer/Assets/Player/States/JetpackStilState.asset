@@ -11,12 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebc436ad0c29b74dab54ee6ab9d1a3b, type: 3}
   m_Name: JetpackStilState
   m_EditorClassIdentifier: 
-  FastFallingModifier: 2
+  FastFallingModifier: 0
   Acceleration: 40
   Friction: 5
   jetPackAcceleration:
-    Min: 2
+    Min: 10
     Max: 20
-  MaxJetPackFuel: 2
+  MaxJetPackFuel: 3
   jetPackFuelCost: 1
-  jetPackFuelRegen: 0
+  currentFuel: 0
+  waitBeforeTransitionToGround: 0.3
