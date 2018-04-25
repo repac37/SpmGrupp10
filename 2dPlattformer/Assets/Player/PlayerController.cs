@@ -15,6 +15,7 @@ public class PlayerController : Controller
     public float GroundCheckDistance; //GroundCheckDistance kommer användas för kollisionsdetektering
     public float InputMagnitudeToMove; //InputmagnitudeToMove har med input och göra, täcks i GroundState
     public MinMaxFloat SlopeAngles; //SlopeAngles användMaxSpeed kommer vara våran karaktärs topphastighet i units/s för CheckAllowedSlope
+   
 
     [HideInInspector]
     public BoxCollider2D Collider; //Collider är spelarens boxcollider
@@ -61,7 +62,7 @@ public class PlayerController : Controller
 
     public void SnapToHit(RaycastHit2D hit)
     {
-
+   
         Vector2 vectorToPoint = hit.point - (Vector2)transform.position;
         
         vectorToPoint -= MathHelper.PointOnRectangle(vectorToPoint.normalized, Collider.size);
@@ -72,7 +73,6 @@ public class PlayerController : Controller
         {
             transform.position += movement;
         }
-
             
     }
 

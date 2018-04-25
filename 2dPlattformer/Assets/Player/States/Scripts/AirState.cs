@@ -28,7 +28,8 @@ public class AirState : State    {
 
         if (Input.GetAxis("LeftTrigger") != 0 && _controller.GetState<GroundState>().currentFuel >= 0)
         {
-            _controller.TransitionTo<JetpackState>();
+            //_controller.TransitionTo<JetpackState>();
+            _controller.TransitionTo<JetpackStilState>();
         }
         _controller.GetState<GroundState>().UpdateJump();
         UpdateGravity();
