@@ -12,7 +12,10 @@ public class GroundState : State {
     public float Acceleration;
     public float Deceleration;
     public float TurnModifier;
-   
+
+    //private bool onMovingPlateForm;
+    //private Vector2 hitVelocity;
+
     [Header("Jumping")]
     public int MaxJumps = 2;
     public float InitialJumpDistance;
@@ -73,6 +76,8 @@ public class GroundState : State {
         UpdateMovement();
         UpdateNormalForce(hits);
         _transform.Translate(_velocity * Time.deltaTime);
+      
+        
         UpdateJump();
         UpdateJetpack();
 
@@ -89,6 +94,16 @@ public class GroundState : State {
         _groundNormal = Vector2.zero;
         foreach (RaycastHit2D hit in hits)
         {
+            //if (hit.collider.CompareTag("MovingPlatform"))
+            //{
+            //    onMovingPlateForm = true;
+            //    hitVelocity = hit.collider.GetComponent<MovablePlatform>().velocity;
+            //    float dirX = Math.Sign(hitVelocity.x);
+            //    float dirY = Math.Sign(hitVelocity.y);
+            //    float pushX = (dirY == 1) ? hitVelocity.x : 0;
+            //    float pushY = hitVelocity.y - hit.distance * dirY;
+            //    _velocity = new Vector2(pushX, pushY);
+            //}
             //Stämmer av lutningen om den är inom vår ram fortsätter.
             if (!MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
                 continue;
@@ -109,11 +124,17 @@ public class GroundState : State {
     private void UpdateNormalForce(RaycastHit2D[] hits)
     {
         if (hits.Length == 0) return;
+
         _controller.SnapToHit(hits[0]);
+
+
         foreach (RaycastHit2D hit in hits)
         {
             if (Mathf.Approximately(_velocity.magnitude, 0.0f)) continue;
-            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+
+      
+                _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+            
         }
     }
 
@@ -192,7 +213,9 @@ public class GroundState : State {
     public void UpdateJetpack()
     {
         UpdateFuel();
-        if (Input.GetAxis("LeftTrigger") == 0 || Input.GetKeyDown(KeyCode.J)) return;
+        float VerticalInput = Input.GetAxis("Vertical");
+     
+        if (Input.GetAxis("LeftTrigger") == 0 || VerticalInput < 0 ) return;
         TransitionToJetPack();
     }
 
@@ -202,8 +225,8 @@ public class GroundState : State {
         if (_JetpackCountDownTimer <= 0)
         {
             _JetpackCountDownTimer = reloadJetpack;
-            _controller.GetState<JetpackStilState>().currentFuel = _controller.GetState<JetpackStilState>().MaxJetPackFuel;
-            _controller.TransitionTo<JetpackStilState>();
+            _controller.GetState<JetpackState>().currentFuel = _controller.GetState<JetpackState>().MaxJetPackFuel;
+            _controller.TransitionTo<JetpackState>();
         }
     }
 
@@ -214,6 +237,11 @@ public class GroundState : State {
             _JetpackCountDownTimer -= 1f * Time.deltaTime;
            
         }
+    }
+
+    public override void Exit()
+    {
+        //onMovingPlateForm = false;
     }
 
 }

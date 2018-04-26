@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "States/AirState")]
@@ -12,6 +13,8 @@ public class AirState : State    {
 
     public bool CanCancelJump;
 
+    private List<Collider2D> _ignoredPlatforms = new List<Collider2D>();
+
     private PlayerController _controller;
     private Transform _transform { get { return _controller.transform; } }
     private Vector2 _velocity
@@ -19,23 +22,37 @@ public class AirState : State    {
         get { return _controller.Velocity; }
         set { _controller.Velocity = value; }
     }
+
     public override void Initialize(Controller owner)
     {
         _controller = (PlayerController)owner;
     }
+
+    public override void Enter()
+    {
+        _ignoredPlatforms.Clear();
+    }
+
     public override void Update()
     {
-
-        if (Input.GetAxis("LeftTrigger") != 0 && _controller.GetState<JetpackStilState>().currentFuel >= 0)
+        if (Input.GetAxis("LeftTrigger") != 0 && _controller.GetState<JetpackState>().currentFuel >= 0)
         {
-            //_controller.TransitionTo<JetpackState>();
-            _controller.TransitionTo<JetpackStilState>();
+            _controller.TransitionTo<JetpackState>();
         }
         _controller.GetState<GroundState>().UpdateJump();
+
         UpdateGravity();
         RaycastHit2D[] hits = _controller.DetectHits();
         CancelJump();
         UpdateMovement();
+
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(_transform.position + (Vector3)_controller.Collider.offset, _controller.Collider.size, 0.0f, _controller.CollisionLayers);
+        for (int i = _ignoredPlatforms.Count - 1; i >= 0; i--)
+        {
+            if (!colliders.Contains(_ignoredPlatforms[i]))
+                _ignoredPlatforms.Remove(_ignoredPlatforms[i]);
+        }
+
         UpdateNormalForce(hits);
         _transform.Translate(_velocity * Time.deltaTime);
     }
@@ -44,18 +61,35 @@ public class AirState : State    {
         float gravityModifier = _velocity.y < 0.0f ? FastFallingModifier : 1f;
         _velocity += Vector2.down * _controller.Gravity * gravityModifier * Time.deltaTime;
     }
+
     private void UpdateNormalForce(RaycastHit2D[] hits)
     {
         
         if (hits.Length == 0) return; //Kollar om vi träffar nått
 
-        _controller.SnapToHit(hits[0]);  //kollar om vi ska snappa till marken
+       
+        RaycastHit2D snapHit = hits.FirstOrDefault(h => !h.collider.CompareTag("OneWay"));
+        
+        if (snapHit.collider != null)
+        {
+            _controller.SnapToHit(snapHit);
+        }
 
         //kollar om marken är rätt inom till låten vinkel
         foreach (RaycastHit2D hit in hits)
-        {
-            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+        {            
 
+            if (hit.collider.CompareTag("OneWay") && _velocity.y > 0.0f && !_ignoredPlatforms.Contains(hit.collider))
+            {
+                _ignoredPlatforms.Add(hit.collider);
+            }
+
+            if (_ignoredPlatforms.Contains(hit.collider))
+                continue;
+
+           // Debug.Log("jump: " + MathHelper.GetNormalForce(_velocity, hit.normal));
+            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+            
             if (MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
                 _controller.TransitionTo<GroundState>();
         }

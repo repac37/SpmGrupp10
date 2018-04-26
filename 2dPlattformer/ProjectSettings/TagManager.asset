@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Killzone
   - Enemy
+  - Floor
+  - OneWay
   layers:
   - Default
   - TransparentFX

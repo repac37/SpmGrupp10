@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: AirState
   m_EditorClassIdentifier: 
   FastFallingModifier: 0.5
-  Acceleration: 40
-  Friction: 10
+  Acceleration: 50
+  Friction: 0
   CanCancelJump: 0

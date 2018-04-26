@@ -28,7 +28,7 @@ public class Armed : MonoBehaviour {
             selectedWeapon = 0;
         }
 
-        Debug.Log("Vapen " + selectedWeapon);
+       // Debug.Log("Vapen " + selectedWeapon);
 
         SelectWeapon();
     }

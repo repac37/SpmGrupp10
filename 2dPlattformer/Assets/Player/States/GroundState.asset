@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: GroundState
   m_EditorClassIdentifier: 
   Acceleration: 100
-  Deceleration: 40
+  Deceleration: 100
   TurnModifier: 10
   MaxJumps: 1
   InitialJumpDistance: 0.05

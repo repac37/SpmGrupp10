@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: JetpackState
   m_EditorClassIdentifier: 
   FastFallingModifier: 0
-  Acceleration: 100
-  Friction: 10
+  Acceleration: 40
+  Friction: 5
   jetPackAcceleration:
-    Min: 2
-    Max: 30
-  MaxJetPackFuel: 0.5
-  jetPackFuelCost: 2
-  jetPackFuelRegen: 1
+    Min: 20
+    Max: 20
+  MaxJetPackFuel: 3
+  jetPackFuelCost: 1
+  currentFuel: 0
+  waitBeforeTransitionToGround: 0.3
