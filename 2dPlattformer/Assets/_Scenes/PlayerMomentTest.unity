@@ -193,6 +193,16 @@ Prefab:
       propertyPath: MaxSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114434350504986116, guid: d88cac455b43c7f488f8643a3b115488,
+        type: 2}
+      propertyPath: GroundCheckDistance
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 61088184015205702, guid: d88cac455b43c7f488f8643a3b115488,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d88cac455b43c7f488f8643a3b115488, type: 2}
   m_IsPrefabParent: 0
