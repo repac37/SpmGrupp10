@@ -4,12 +4,24 @@ using System.Collections;
 public class Death : MonoBehaviour
 {
 
+    public LevelManager levelManager;
+
+    void Start()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerVariables>().Respawn();
+            //other.GetComponent<PlayerVariables>().Respawn();
             // Spelaren har en funktion som heter Respawn i scriptet PlayerController. Anropa denna funktion för att få spelaren att börja om från sin startposition. YOLO
+
+            if (other.name == "Player")
+            {
+                levelManager.RespawnPlayer();
+            }
 
         }
        /* else

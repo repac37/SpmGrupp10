@@ -13,7 +13,8 @@ public class Pickup : MonoBehaviour {
         {
             armed.GetComponentInParent<Armed>().selectedWeapon = 1;
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+
             Debug.Log("Byta vapen");
 
             if (armed.GetComponentInParent<Armed>().selectedWeapon == 1)
