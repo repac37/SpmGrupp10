@@ -4,28 +4,37 @@ using UnityEngine;
 
 public class ArmRotation : MonoBehaviour
 {
+    public Transform crosshair;
 
-    public int rotationOffset = 0;
 
+
+    void Start()
+    {
+        Transform clone = Instantiate(crosshair, new Vector2(transform.position.x + 10, transform.position.y), Quaternion.identity);
+        crosshair = clone;
+        crosshair.transform.parent = this.transform;
+    }
     // Update is called once per frame
     void Update()
     {
         float inputX = Input.GetAxis("HorizontalRightStick");
         float inputY = Input.GetAxis("VerticalRightStick");
-        if (inputX != 0.0f && inputY != 0.0f)
+        if (Mathf.Abs(inputX) > 0.2f || Mathf.Abs(inputY) > 0.2f)
         {
+            crosshair.gameObject.SetActive(true);
             Vector2 difference = new Vector2(inputX, inputY);
-
-          
-            //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             difference.Normalize();
 
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
+            transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+            
+
+
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0 + rotationOffset);
+            crosshair.gameObject.SetActive(false);
+       
         }
     }
 }

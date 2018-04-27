@@ -17,7 +17,7 @@ MonoBehaviour:
   jetPackAcceleration:
     Min: 20
     Max: 20
-  MaxJetPackFuel: 3
+  MaxJetPackFuel: 2
   jetPackFuelCost: 1
   currentFuel: 0
   waitBeforeTransitionToGround: 0.3

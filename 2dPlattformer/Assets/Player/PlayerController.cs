@@ -15,7 +15,7 @@ public class PlayerController : Controller
     public float GroundCheckDistance; //GroundCheckDistance kommer användas för kollisionsdetektering
     public float InputMagnitudeToMove; //InputmagnitudeToMove har med input och göra, täcks i GroundState
     public MinMaxFloat SlopeAngles; //SlopeAngles användMaxSpeed kommer vara våran karaktärs topphastighet i units/s för CheckAllowedSlope
-   
+    public static float fuel = 3f;
 
     [HideInInspector]
     public BoxCollider2D Collider; //Collider är spelarens boxcollider

@@ -86,6 +86,7 @@ public class JetpackState : State
             _controller.TransitionTo<AirState>();
         }
 
+        PlayerController.fuel = currentFuel;
 
     }
 
@@ -145,7 +146,7 @@ public class JetpackState : State
             else
             {
                 tmpWaitBeforeTransitionToGround -= 1f * Time.deltaTime;
-                Debug.Log("wait: " + tmpWaitBeforeTransitionToGround);
+            
                 _velocity = Vector2.zero;
             }
         }

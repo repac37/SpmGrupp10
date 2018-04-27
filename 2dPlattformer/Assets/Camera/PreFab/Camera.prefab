@@ -93,7 +93,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 26.6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -163,12 +163,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Offset: {x: 0, y: 0, z: -10}
+  _targetPosition: {x: 0, y: 0, z: 0}
+  _orthographicCamera: {fileID: 0}
   SmoothingTime: 0.2
   MaxLookAhead: 15
   LookAheadAccelerationTime: 2
   MaxLookAroundAmount: 7
   TimeBeforeLookAround: 2
   PlayerMaximumSpeedForLookAround: 1
+  enterdArena: 0
+  arenaCameraSize: 10
+  regularCameraSize: 5
+  sizeSpeed: 0.1
 --- !u!124 &124916730202173426
 Behaviour:
   m_ObjectHideFlags: 1

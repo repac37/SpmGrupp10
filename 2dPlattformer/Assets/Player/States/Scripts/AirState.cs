@@ -87,8 +87,8 @@ public class AirState : State    {
             if (_ignoredPlatforms.Contains(hit.collider))
                 continue;
 
-           // Debug.Log("jump: " + MathHelper.GetNormalForce(_velocity, hit.normal));
-            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+          
+           _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
             
             if (MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
                 _controller.TransitionTo<GroundState>();

@@ -226,16 +226,18 @@ public class GroundState : State {
         {
             _JetpackCountDownTimer = reloadJetpack;
             _controller.GetState<JetpackState>().currentFuel = _controller.GetState<JetpackState>().MaxJetPackFuel;
+            PlayerController.fuel = _controller.GetState<JetpackState>().currentFuel;
             _controller.TransitionTo<JetpackState>();
         }
     }
 
     private void UpdateFuel()
     {
-        if(_JetpackCountDownTimer >= 0)
+        
+        if (_JetpackCountDownTimer >= 0)
         {
             _JetpackCountDownTimer -= 1f * Time.deltaTime;
-           
+            
         }
     }
 
