@@ -20,6 +20,7 @@ public class MoveBulletTrail : MonoBehaviour {
         {
             //PlayerVariables play = other.gameObject.GetComponent<PlayerVariables>();
             Debug.Log("Player hit!");
+            PlayerVariables.health--;
             //play.Harm(5f);
                 //getComponent<PlayerVariables>().Harm(damage);
             Destroy(gameObject);

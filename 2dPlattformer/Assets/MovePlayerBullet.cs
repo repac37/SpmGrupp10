@@ -31,10 +31,8 @@ public class MovePlayerBullet : MonoBehaviour {
         }
         if (other.gameObject.tag == "Player")
         {
-
-            Debug.Log("Player hit!");
+            PlayerVariables.health--;
             Destroy(gameObject);
-
         }
 
     }

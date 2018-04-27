@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 23499812600320680}
   - component: {fileID: 61388024799890014}
   - component: {fileID: 114653016167641580}
+  - component: {fileID: 114381845406493176}
   - component: {fileID: 50391424749965912}
   m_Layer: 0
   m_Name: Player
@@ -251,7 +252,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1742137971595672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4652000700406134}
@@ -601,6 +602,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+--- !u!114 &114381845406493176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742137971595672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30dc7da24a58867408eb2eb8e2b4e87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: 100188506123c40488924fc226f89f8a, type: 2}
+  levelNumber: 0
+  hasKey: 0
 --- !u!114 &114590964258818556
 MonoBehaviour:
   m_ObjectHideFlags: 1

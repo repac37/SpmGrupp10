@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerVariables : MonoBehaviour {
 
-	public static int health = 4;
-
+    public static int health;
+    public PlayerManager player;
     [HideInInspector]
 	private static float damageTimer = 0f;
     public int levelNumber;
@@ -16,7 +16,7 @@ public class PlayerVariables : MonoBehaviour {
     public bool hasKey = false;
 
 	void Start () {
-
+        health = player.health;
     }
 
     void Update () {

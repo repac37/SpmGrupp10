@@ -8,6 +8,5 @@ public class PlayerManager : ScriptableObject {
     [Header("Stats")]
     public int health;
     public float maxFuel;
-    public float Friction;
 
 }

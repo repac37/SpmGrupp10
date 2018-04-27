@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
-    private PlayerVariables player;
+    //private PlayerVariables player;
 
 
     public Slider fuelSlider;
@@ -17,12 +17,7 @@ public class UiManager : MonoBehaviour
     public int hp;
     public float ammo;
     public float jetfuel = 0;
-
-
-    
-    
-
-    private PlayerController _controller;
+    public PlayerManager player;
     
 
     // Use this for initialization
@@ -33,7 +28,7 @@ public class UiManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        
+
         hp = PlayerVariables.health;
         
         
@@ -41,7 +36,7 @@ public class UiManager : MonoBehaviour
         jetfuel = PlayerController.fuel;
 
 
-        fuelSlider.maxValue = 3.0f;
+        fuelSlider.maxValue = player.maxFuel;
         fuelSlider.minValue = 0.0f;
         fuelSlider.value = jetfuel;
         

@@ -58,8 +58,6 @@ public class GroundState : State {
     {
         _jumps = MaxJumps;
         PlayerController.fuel = _controller.playerManager.maxFuel;
-
-
     }
 
     public override void Update()
