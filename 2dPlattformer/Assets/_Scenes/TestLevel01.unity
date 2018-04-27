@@ -6334,8 +6334,6 @@ MonoBehaviour:
   hp: 0
   ammo: 0
   jetfuel: 0
-  currentState: {fileID: 0}
-  JetPackState: {fileID: 0}
 --- !u!1 &2075609123
 GameObject:
   m_ObjectHideFlags: 0
@@ -6476,6 +6474,12 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 4.33
       objectReference: {fileID: 0}
+    - target: {fileID: 114653016167641580, guid: baf66dd42daee6a43af8a86e0fe7976d,
+        type: 2}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 11400000, guid: a742eefcab4f05944ae2d559ffe44348,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: baf66dd42daee6a43af8a86e0fe7976d, type: 2}
   m_IsPrefabParent: 0

@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontal: 1
-  speed: 0.2
+  speed: 1
   sinOffset: 3
-  playerContanier: {fileID: 848203630}
+  playerContanier: {fileID: 0}
   velocity: {x: 0, y: 0}
 --- !u!4 &628685118
 Transform:
@@ -220,11 +220,6 @@ Camera:
   m_PrefabParentObject: {fileID: 20495417723174574, guid: 14056d9a5a997334989fae75fdacd250,
     type: 2}
   m_PrefabInternal: {fileID: 1668289813}
---- !u!1 &848203630 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1789780963504038, guid: baf66dd42daee6a43af8a86e0fe7976d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1612771196}
 --- !u!1 &930071172
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,8 +530,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114280601124534406, guid: baf66dd42daee6a43af8a86e0fe7976d, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: baf66dd42daee6a43af8a86e0fe7976d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1668289813

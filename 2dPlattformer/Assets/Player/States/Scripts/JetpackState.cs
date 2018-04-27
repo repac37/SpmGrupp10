@@ -15,7 +15,7 @@ public class JetpackState : State
     public float Friction;
     public MinMaxFloat jetPackAcceleration;
     [Header("Fuel")]
-    public float MaxJetPackFuel = 4f;
+    private float MaxJetPackFuel;
     public float jetPackFuelCost = 2f;
     [HideInInspector] public float currentFuel = 0;
 
@@ -38,6 +38,7 @@ public class JetpackState : State
     public override void Initialize(Controller owner)
     {
         _controller = (PlayerController)owner;
+        MaxJetPackFuel = _controller.playerManager.maxFuel;
     }
 
     public override void Enter()

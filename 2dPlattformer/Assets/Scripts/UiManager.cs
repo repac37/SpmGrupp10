@@ -33,7 +33,7 @@ public class UiManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(hp);
+        
         hp = PlayerVariables.health;
         
         
