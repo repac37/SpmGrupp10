@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/TestLevel01.unity
+- path: D:/Skola/Termin4/SpelMek/Grupp10/AWAYOUT GRUPP10/2dPlattformer/Assets/_Scenes/Level3.unity
   isLoaded: 1
   isActive: 1

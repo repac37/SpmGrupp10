@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4664427878273988}
-  - component: {fileID: 114068702801400158}
+  - component: {fileID: 114341860738209372}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -282,29 +282,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114068702801400158
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1481005912390660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d512f7c7edd84479cafd02cbca4479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuelSlider: {fileID: 114027009269573910}
-  ammoText: {fileID: 114402451856524280}
-  healthSprites:
-  - {fileID: 21300008, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300006, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300004, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300002, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300000, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  healthUI: {fileID: 114622997150749044}
-  hp: 0
-  ammo: 0
-  jetfuel: 0
 --- !u!114 &114160407176323604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +375,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114341860738209372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1481005912390660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d512f7c7edd84479cafd02cbca4479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelSlider: {fileID: 114027009269573910}
+  ammoText: {fileID: 114402451856524280}
+  healthSprites:
+  - {fileID: 21300008, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300006, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300004, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300002, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300000, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  healthUI: {fileID: 114622997150749044}
+  hp: 0
+  ammo: 0
+  jetfuel: 0
+  player: {fileID: 11400000, guid: 100188506123c40488924fc226f89f8a, type: 2}
 --- !u!114 &114402451856524280
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,6 +9,11 @@ public class MovePlayerBullet : MonoBehaviour {
     public float destroyTime = 0;
 
     public LayerMask layerMask;
+    public GameObject dropItem;
+
+    private bool isInArena = false;
+
+    private Arena arena;
 
     // Update is called once per frame
     void Update()
@@ -26,15 +31,43 @@ public class MovePlayerBullet : MonoBehaviour {
 
         if (other.CompareTag("Enemy"))
         {
+            //dropItem.transform.position = transform.position;
+            //Instantiate(dropItem);
+            if (isInArena)
+            {
+                arena.killcount += -1;
+            }
+            
+
             Destroy(gameObject);
             Destroy(other.gameObject);
+
         }
         if (other.gameObject.tag == "Player")
         {
-            PlayerVariables.health--;
+
+            Debug.Log("Player hit!");
             Destroy(gameObject);
+
         }
 
     }
-   
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Arena")) {
+            isInArena= true;
+            arena = collision.GetComponent<Arena>();
+        }
+        
+        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Arena"))
+        {
+            isInArena = false;
+            
+        }
+    }
+
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Arena : MonoBehaviour {
     public CameraFollow cam;
-    private CameraFollow originalCamera;
+    //private CameraFollow originalCamera;
+    public GameObject cameraPosition;
     //private Vector3 Position;
     public GameObject lazer;
     public GameObject exitLazer;
@@ -12,7 +13,11 @@ public class Arena : MonoBehaviour {
     public int arenaCameraSize = 10;
     public float sizeSpeed = 0.1f;
 
-
+    private void Start()
+    {
+        cam.arenaCameraSize = arenaCameraSize;
+        cam.sizeSpeed = sizeSpeed;
+    }
     private void Update()
     {
     }
@@ -26,7 +31,7 @@ public class Arena : MonoBehaviour {
             cam.enterdArena = true;
             cam.arenaCameraSize = arenaCameraSize;
             cam.sizeSpeed = sizeSpeed;
-            originalCamera = cam;
+           // originalCamera = cam;
 
             lazer.SetActive(true);
         }
@@ -37,7 +42,7 @@ public class Arena : MonoBehaviour {
     {
         if (collision.CompareTag("Player"))
         {
-            cam._targetPosition = transform.Find("CameraPosition").position;
+            cam._targetPosition = cameraPosition.transform.position;//transform.Find("CameraPosition").position;
 
             //cam.orthographicSize = cameraSize;
 

@@ -37,7 +37,8 @@ public class DronePatrolState : MonoBehaviour
         }
         if(!detected)
         {
-            patrolState();
+            if(patrolPoints.Length!=0)
+                patrolState();
         }
 
         
