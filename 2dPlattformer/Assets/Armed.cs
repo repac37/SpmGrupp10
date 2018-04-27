@@ -6,6 +6,7 @@ public class Armed : MonoBehaviour {
 
 
     public int selectedWeapon = 0;
+    
 
 
     // Use this for initialization
@@ -21,11 +22,14 @@ public class Armed : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.P))
         {
             selectedWeapon = 1;
+            Weapon.ammo = 100;
+            
         }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
             selectedWeapon = 0;
+            
         }
 
        // Debug.Log("Vapen " + selectedWeapon);

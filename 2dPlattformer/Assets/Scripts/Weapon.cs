@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
 
     public float fireRate = 0;
     public float damage = 10;
-    public float ammo = 0;
+    public static float ammo = 0;
 
 
     private float timeToFire = 0;

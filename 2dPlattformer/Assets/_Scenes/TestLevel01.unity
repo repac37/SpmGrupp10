@@ -6177,6 +6177,165 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1948798945}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2036570485
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224296666273051666, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224694650356652648, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224416650174148772, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114068702801400158, guid: cdcb960d06aac8043973aca2e598f1cb, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: cdcb960d06aac8043973aca2e598f1cb, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &2036570486 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1481005912390660, guid: cdcb960d06aac8043973aca2e598f1cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2036570485}
+--- !u!114 &2036570487 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114622997150749044, guid: cdcb960d06aac8043973aca2e598f1cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2036570485}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &2036570488 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114402451856524280, guid: cdcb960d06aac8043973aca2e598f1cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2036570485}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &2036570489 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114027009269573910, guid: cdcb960d06aac8043973aca2e598f1cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2036570485}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &2036570490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2036570486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d512f7c7edd84479cafd02cbca4479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelSlider: {fileID: 2036570489}
+  ammoText: {fileID: 2036570488}
+  healthSprites:
+  - {fileID: 21300008, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300006, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300004, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300002, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300000, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  healthUI: {fileID: 2036570487}
+  hp: 0
+  ammo: 0
+  jetfuel: 0
+  currentState: {fileID: 0}
+  JetPackState: {fileID: 0}
 --- !u!1 &2075609123
 GameObject:
   m_ObjectHideFlags: 0

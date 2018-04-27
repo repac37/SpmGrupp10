@@ -19,7 +19,7 @@ public class Pickup : MonoBehaviour {
 
             if (armed.GetComponentInParent<Armed>().selectedWeapon == 1)
             {
-                weapon.GetComponentInParent<Weapon>().ammo = 100;
+               // weapon.GetComponentInParent<Weapon>().ammo = 100;
             }
 
         }

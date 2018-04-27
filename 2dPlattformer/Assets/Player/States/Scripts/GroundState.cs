@@ -57,7 +57,9 @@ public class GroundState : State {
     public override void Enter()
     {
         _jumps = MaxJumps;
-       
+        //PlayerController.fuel = _controller.GetState<JetpackState>().MaxJetPackFuel;
+
+
     }
 
     public override void Update()
