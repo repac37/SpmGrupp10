@@ -14,8 +14,10 @@ public class DroneShoot : MonoBehaviour {
     Transform firePoint;
     GameObject objectToHit;
 
-	// Use this for initialization
-	void Awake () {
+    public DronePatrolState parent;
+
+    // Use this for initialization
+    void Awake () {
         timer = startTimer;
         firePoint = transform.Find("FirePoint");
         objectToHit = GameObject.FindGameObjectWithTag("Player");
@@ -24,7 +26,7 @@ public class DroneShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer -= Time.deltaTime;
-        if(timer <= 0)
+        if(timer <= 0&&parent.detected)
         {
             Shoot();
         }

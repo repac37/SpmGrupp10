@@ -27,6 +27,7 @@ public class MoveBulletTrail : MonoBehaviour {
             // Kolliderar detta objekt med spelaren bör denna göra via Harm(float) funktionen som finns i spelarens PlayerVariables script.YOLO
 
         }
+        Destroy(gameObject);
     }
 
    /* private void OnCollisionEnter2D(Collision2D other)

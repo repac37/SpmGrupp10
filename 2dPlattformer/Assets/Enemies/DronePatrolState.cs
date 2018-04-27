@@ -4,35 +4,65 @@ using UnityEngine;
 
 public class DronePatrolState : MonoBehaviour
 {
-    public float movementSpeed;
-    public float startWaitTime;
-    private float waitTime;
+
+    private Transform player;
+    private float speed;
+    public float maxFollowSpeed;
+    public float minFollowSpeed;
+    public float followDistance;
+
+    public float patrolMovementSpeed;
+    public float patrolStartWaitTime;
+    private float patrolWaitTime;
+
+    public bool detected=false;
 
     public Transform[] patrolPoints;
     private int randomSpot;
 
+    // Use this for initialization
     void Start()
     {
-        waitTime = startWaitTime;
-        randomSpot = Random.Range(0, patrolPoints.Length);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        speed = Random.Range(minFollowSpeed, maxFollowSpeed);
     }
 
+    // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, patrolPoints[randomSpot].position, movementSpeed * Time.deltaTime);
+        
+        if (detected)
+        {
+            followState();
+        }
+        if(!detected)
+        {
+            patrolState();
+        }
+
+        
+    }
+
+    void followState()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+    }
+
+    void patrolState()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, patrolPoints[randomSpot].position, speed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, patrolPoints[randomSpot].position) < 0.5f)
         {
-            if (waitTime <= 0)
+            if (patrolWaitTime <= 0)
             {
                 randomSpot = Random.Range(0, patrolPoints.Length);
-                waitTime = startWaitTime;
+                patrolWaitTime = patrolStartWaitTime;
             }
             else
             {
-                waitTime -= Time.deltaTime;
+                patrolWaitTime -= Time.deltaTime;
             }
         }
     }
-
 }

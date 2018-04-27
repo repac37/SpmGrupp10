@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Floor
   - OneWay
+  - PlayerDetection
   layers:
   - Default
   - TransparentFX
