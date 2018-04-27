@@ -29,7 +29,7 @@ public class Armed : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.O))
         {
             selectedWeapon = 0;
-            
+            Weapon.ammo = 9999999999999;
         }
 
        // Debug.Log("Vapen " + selectedWeapon);

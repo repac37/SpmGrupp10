@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
 
     public float fireRate = 0;
     public float damage = 10;
-    public static float ammo = 0;
+    public static float ammo = 9999999999999;
 
 
     private float timeToFire = 0;
@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
 
         if (ammo == 0 && armed.GetComponentInParent<Armed>().selectedWeapon == 1)
         {
-            ammo = 100;
+            ammo = 999999999;
             armed.GetComponentInParent<Armed>().selectedWeapon = 0;
         }
     }
