@@ -2393,6 +2393,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606578423}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &607281153 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1992489667703078, guid: baf66dd42daee6a43af8a86e0fe7976d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600449299}
 --- !u!1 &615072979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,12 +3930,13 @@ Prefab:
         type: 2}
       propertyPath: armed
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 607281153}
     - target: {fileID: 114799311697501652, guid: 6d5d0ae04616e7e4e9cc4b06e98adf9b,
         type: 2}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1762125482167680, guid: a2b1c1c3b1ce6a74f98b1b0382281558,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d5d0ae04616e7e4e9cc4b06e98adf9b, type: 2}
   m_IsPrefabParent: 0
