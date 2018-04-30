@@ -140,7 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 3
   damage: 10
-  ammo: 0
   bulletTrailPrefab: {fileID: 4445177289320144, guid: b572e023eea4c9b41a6685341b639129,
     type: 2}
   armed: {fileID: 0}

@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  cameraPosition: {fileID: 0}
   lazer: {fileID: 1910816878362600}
   exitLazer: {fileID: 1649959253559520}
   killcount: 1

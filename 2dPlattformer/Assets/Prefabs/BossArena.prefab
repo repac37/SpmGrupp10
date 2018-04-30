@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  cameraPosition: {fileID: 0}
   lazer: {fileID: 0}
   exitLazer: {fileID: 0}
   killcount: 1
