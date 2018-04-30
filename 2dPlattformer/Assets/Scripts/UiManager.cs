@@ -17,7 +17,7 @@ public class UiManager : MonoBehaviour
     public int hp;
     public float ammo;
     public float jetfuel = 0;
-    public PlayerManager player;
+    public PlayerManager playerManager;
     
 
     // Use this for initialization
@@ -29,14 +29,15 @@ public class UiManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 
-        hp = PlayerVariables.health;
-        
-        
+        hp = PlayerManager.currentHealth;
+
+
+
         ammo = Weapon.ammo;
-        jetfuel = PlayerController.fuel;
+        jetfuel = playerManager.currentFuel;
 
 
-        fuelSlider.maxValue = player.maxFuel;
+        fuelSlider.maxValue = playerManager.playerVar.maxFuel;
         fuelSlider.minValue = 0.0f;
         fuelSlider.value = jetfuel;
         

@@ -57,7 +57,7 @@ public class GroundState : State {
     public override void Enter()
     {
         _jumps = MaxJumps;
-        PlayerController.fuel = _controller.playerManager.maxFuel;
+        _controller.playerManager.Refuel();
     }
 
     public override void Update()
@@ -225,8 +225,9 @@ public class GroundState : State {
         if (_JetpackCountDownTimer <= 0)
         {
             _JetpackCountDownTimer = reloadJetpack;
-            _controller.GetState<JetpackState>().currentFuel = _controller.playerManager.maxFuel;
-            PlayerController.fuel = _controller.GetState<JetpackState>().currentFuel;
+
+            _controller.playerManager.Refuel();
+
             _controller.TransitionTo<JetpackState>();
         }
     }

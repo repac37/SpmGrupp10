@@ -1866,6 +1866,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3af0a0798af04e64e906d4732e6beda3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &510746860 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114454959224497648, guid: baf66dd42daee6a43af8a86e0fe7976d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600449299}
+  m_Script: {fileID: 11500000, guid: 849390fc60acc0a40ab3fd8794bba1a7, type: 3}
 --- !u!1 &529958167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,7 +4930,7 @@ MonoBehaviour:
   whatToHit:
     serializedVersion: 2
     m_Bits: 512
-  BulletTrailPrefab: {fileID: 4263600952885392, guid: e47a036aeaecf534795155777b5be898,
+  BulletTrailPrefab: {fileID: 4445177289320144, guid: b572e023eea4c9b41a6685341b639129,
     type: 2}
   timer: 0
   startTimer: 2
@@ -6528,6 +6534,11 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114341860738209372, guid: cdcb960d06aac8043973aca2e598f1cb,
+        type: 2}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 510746860}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cdcb960d06aac8043973aca2e598f1cb, type: 2}
   m_IsPrefabParent: 0

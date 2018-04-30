@@ -15,9 +15,8 @@ public class JetpackState : State
     public float Friction;
     public MinMaxFloat jetPackAcceleration;
     [Header("Fuel")]
-    private float MaxJetPackFuel;
     public float jetPackFuelCost = 2f;
-    [HideInInspector] public float currentFuel = 0;
+    
 
     private bool _hitGround = false;
     public float waitBeforeTransitionToGround = 1.0f;
@@ -38,7 +37,7 @@ public class JetpackState : State
     public override void Initialize(Controller owner)
     {
         _controller = (PlayerController)owner;
-        MaxJetPackFuel = _controller.playerManager.maxFuel;
+       
     }
 
     public override void Enter()
@@ -59,13 +58,13 @@ public class JetpackState : State
             _controller.Velocity = Vector2.zero;
 
 
-            if (currentFuel <= 0)
+            if (_controller.playerManager.currentFuel <= 0)
             {
                 _controller.TransitionTo<AirState>();
             }
 
             //_controller.GetState<GroundState>().UpdateJetpack();
-            currentFuel -= jetPackFuelCost * Time.deltaTime;
+            _controller.playerManager.Fuel(jetPackFuelCost * Time.deltaTime);
             //Debug.Log(_controller.GetState<GroundState>().currentFuel);
 
             RaycastHit2D[] hits = _controller.DetectHits();
@@ -87,7 +86,7 @@ public class JetpackState : State
             _controller.TransitionTo<AirState>();
         }
 
-        PlayerController.fuel = currentFuel;
+        
 
     }
 

@@ -24,12 +24,14 @@ public class MovePlayerBullet : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 8)
+        GameObject hit = other.gameObject;
+
+        if (hit.layer == 8)
         {
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Enemy"))
+        if (hit.CompareTag("Enemy"))
         {
             //dropItem.transform.position = transform.position;
             //Instantiate(dropItem);
@@ -43,15 +45,18 @@ public class MovePlayerBullet : MonoBehaviour {
             Destroy(other.gameObject);
 
         }
-        if (other.gameObject.tag == "Player")
+        if (hit.gameObject.tag == "Player")
         {
-
+            PlayerManager.currentHealth--;
             Debug.Log("Player hit!");
             Destroy(gameObject);
 
         }
 
     }
+
+
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Arena")) {

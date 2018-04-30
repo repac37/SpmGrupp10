@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1789780963504038}
   m_IsPrefabParent: 1
+--- !u!1 &1138805747754212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4905444925874512}
+  - component: {fileID: 114454959224497648}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1152067576142500
 GameObject:
   m_ObjectHideFlags: 1
@@ -274,6 +290,19 @@ Transform:
   m_Father: {fileID: 4056441779575590}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4905444925874512
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138805747754212}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15.100547, y: 5.825243, z: -0.0874338}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4918064381204078}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4918064381204078
 Transform:
   m_ObjectHideFlags: 1
@@ -285,6 +314,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4684195327655854}
+  - {fileID: 4905444925874512}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -613,9 +643,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30dc7da24a58867408eb2eb8e2b4e87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 11400000, guid: 100188506123c40488924fc226f89f8a, type: 2}
-  levelNumber: 0
-  hasKey: 0
+  health: 4
+  maxFuel: 3
+--- !u!114 &114454959224497648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138805747754212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849390fc60acc0a40ab3fd8794bba1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerVar: {fileID: 114381845406493176}
+  currentFuel: 0
+  currentHealth: 0
 --- !u!114 &114590964258818556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -671,7 +714,7 @@ MonoBehaviour:
   SlopeAngles:
     Min: -45
     Max: 45
-  playerManager: {fileID: 11400000, guid: 100188506123c40488924fc226f89f8a, type: 2}
+  playerManager: {fileID: 114454959224497648}
   Collider: {fileID: 61388024799890014}
 --- !u!114 &114935315545577766
 MonoBehaviour:

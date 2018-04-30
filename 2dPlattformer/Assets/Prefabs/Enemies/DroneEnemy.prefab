@@ -239,7 +239,7 @@ MonoBehaviour:
   whatToHit:
     serializedVersion: 2
     m_Bits: 512
-  BulletTrailPrefab: {fileID: 4263600952885392, guid: e47a036aeaecf534795155777b5be898,
+  BulletTrailPrefab: {fileID: 4445177289320144, guid: b572e023eea4c9b41a6685341b639129,
     type: 2}
   timer: 0
   startTimer: 2
