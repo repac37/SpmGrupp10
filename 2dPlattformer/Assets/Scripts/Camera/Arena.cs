@@ -8,6 +8,7 @@ public class Arena : MonoBehaviour {
     public GameObject cameraPosition;
     //private Vector3 Position;
     public GameObject lazer;
+    public GameObject lazer2;
     public GameObject exitLazer;
     public int killcount=1;
     public int arenaCameraSize = 10;
@@ -31,9 +32,16 @@ public class Arena : MonoBehaviour {
             cam.enterdArena = true;
             cam.arenaCameraSize = arenaCameraSize;
             cam.sizeSpeed = sizeSpeed;
-           // originalCamera = cam;
+            // originalCamera = cam;
 
-            lazer.SetActive(true);
+            if (lazer != null)
+                lazer.SetActive(true);
+
+            if(lazer2!=null)
+            {
+                lazer2.SetActive(true);
+            }
+            
         }
 
     }
@@ -49,7 +57,7 @@ public class Arena : MonoBehaviour {
             // Spelaren har triggat cameratrigger
             //cam._targetPosition = new Vector3(cam._targetPosition.x, cam._targetPosition.y, camDepth);
         }
-        if(killcount==0){
+        if(killcount==0 && exitLazer!=null){
            exitLazer.SetActive(false);
         }
     }

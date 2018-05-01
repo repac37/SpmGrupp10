@@ -38,6 +38,7 @@ public class MovePlayerBullet : MonoBehaviour {
             if (isInArena)
             {
                 arena.killcount += -1;
+                Debug.Log("Arena kill");
             }
             
 

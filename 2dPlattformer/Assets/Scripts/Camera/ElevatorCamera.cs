@@ -66,7 +66,7 @@ public class ElevatorCamera : MonoBehaviour {
 
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Enter");
+            Debug.Log("EnterElevator");
             if (!hasEnterd) {
                 cameraPosition = startPosition.transform.position;
                 cameraPosition.y += startPositionY;
@@ -77,14 +77,14 @@ public class ElevatorCamera : MonoBehaviour {
             cam.enterdArena = true;
             cam.arenaCameraSize = arenaCameraSize;
             cam.sizeSpeed = sizeSpeed;
-            originalCamera = cam;
+            //originalCamera = cam;
 
             lazer.SetActive(true);
         }
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    /*private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !cam.enterdArena)
         {
@@ -100,7 +100,7 @@ public class ElevatorCamera : MonoBehaviour {
         //if(killcount==0){
            //exitLazer.SetActive(false);
         //}
-    }
+    }*/
 
     private void OnTriggerExit2D(Collider2D collision)
     {

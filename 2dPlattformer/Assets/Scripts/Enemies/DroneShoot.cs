@@ -25,8 +25,10 @@ public class DroneShoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timer -= Time.deltaTime;
-        if(timer <= 0&&parent.detected)
+        if(parent.detected&&timer>0)
+            timer -= Time.deltaTime;
+
+        if(timer <= 0&&parent.detected&&parent.canShoot)
         {
             Shoot();
         }

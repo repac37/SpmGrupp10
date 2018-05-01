@@ -16,6 +16,7 @@ public class DronePatrolState : MonoBehaviour
     private float patrolWaitTime;
 
     public bool detected=false;
+    public bool canShoot = false;
 
     public Transform[] patrolPoints;
     private int randomSpot;

@@ -21,6 +21,15 @@ public class DroneFollowState : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             parent.detected = true;
+            parent.canShoot = true;
+        }
+    }
+    
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            parent.canShoot = false;
         }
     }
 }
