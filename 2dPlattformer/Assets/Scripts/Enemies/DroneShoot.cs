@@ -20,14 +20,16 @@ public class DroneShoot : MonoBehaviour {
     void Awake () {
         timer = startTimer;
         firePoint = transform.Find("FirePoint");
-        objectToHit = GameObject.FindGameObjectWithTag("Player");
+        
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if(parent.detected&&timer>0)
-            timer -= Time.deltaTime;
 
+    // Update is called once per frame
+    void Update() {
+        if (parent.detected) { 
+            objectToHit = GameObject.FindGameObjectWithTag("Player");
+            if (timer>0)
+                timer -= Time.deltaTime;
+        }
         if(timer <= 0&&parent.detected&&parent.canShoot)
         {
             Shoot();

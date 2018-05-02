@@ -30,7 +30,7 @@ public class ElevatorCamera : MonoBehaviour {
         //{
         //    return;
         //}
-        if(cam.enterdArena == true)
+        if(cam.enterdArena == true&&hasEnterd)
         //if(hasEnterd)
         {           
 
@@ -44,6 +44,7 @@ public class ElevatorCamera : MonoBehaviour {
             //cameraPosition = new Vector3(cameraPosition.x,cameraPosition.y+positionY,cameraPosition.z);
             
             cam._targetPosition = cameraPosition;//startPosition.transform.position;
+
         }
         if (hasEnterd)
         {
