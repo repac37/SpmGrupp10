@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361167073838542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -263.53244, y: 370.1211, z: -1.9097626}
+  m_LocalPosition: {x: -60.36166, y: 47.992935, z: -1.9097626}
   m_LocalScale: {x: 0.7333446, y: 0.7333446, z: 0.7333446}
   m_Children:
   - {fileID: 4803219952335290}
@@ -224,7 +224,7 @@ MonoBehaviour:
   whatToHit:
     serializedVersion: 2
     m_Bits: 512
-  BulletTrailPrefab: {fileID: 4445177289320144, guid: b572e023eea4c9b41a6685341b639129,
+  BulletTrailPrefab: {fileID: 4607335872775960, guid: a71399d20650e2c41a03951ab96d2f5e,
     type: 2}
   timer: 2
   startTimer: 2

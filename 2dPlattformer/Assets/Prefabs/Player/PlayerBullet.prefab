@@ -39,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355665342736726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3625, y: 0.9345, z: 0}
-  m_LocalScale: {x: 0.24281247, y: 0.095000125, z: 1}
+  m_LocalPosition: {x: -105.07, y: -3.76, z: 0}
+  m_LocalScale: {x: 0.5177613, y: 0.45072675, z: 2.132352}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -169,7 +169,7 @@ TrailRenderer:
   m_Time: 0.1
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.1
+    widthMultiplier: 0.3
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -235,9 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e645c89ee9d0b12449a6f48035ea2c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 25
   destroyTime: 4
   layerMask:
     serializedVersion: 2
     m_Bits: 0
   dropItem: {fileID: 0}
+  playerBullet: 1

@@ -10,7 +10,9 @@ public class Arena : MonoBehaviour {
     public GameObject lazer;
     public GameObject lazer2;
     public GameObject exitLazer;
+    public GameObject exitLazer2;
     public int killcount=1;
+    public int killcount2 = 1;
     public int arenaCameraSize = 10;
     public float sizeSpeed = 0.1f;
 
@@ -59,6 +61,10 @@ public class Arena : MonoBehaviour {
         }
         if(killcount==0 && exitLazer!=null){
            exitLazer.SetActive(false);
+        }
+        if (killcount == killcount2 && exitLazer2 != null)
+        {
+            exitLazer2.SetActive(false);
         }
     }
 

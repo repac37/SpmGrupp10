@@ -624,8 +624,8 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 4736973836134996}
   - {fileID: 4590320702490330}
-  timer: 1
-  startTimer: 3
+  timer: 0
+  startTimer: 2
 --- !u!114 &114877556575804188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,5 +643,5 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 4995034497003446}
   - {fileID: 4748977673791352}
-  timer: 1
-  startTimer: 3
+  timer: 0
+  startTimer: 2

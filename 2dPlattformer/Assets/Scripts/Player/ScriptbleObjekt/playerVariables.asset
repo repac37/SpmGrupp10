@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: playerVariables
   m_EditorClassIdentifier: 
   health: 4
-  maxFuel: 4
-  RefuelRate: 0.1
+  maxFuel: 8
+  RefuelRate: 4

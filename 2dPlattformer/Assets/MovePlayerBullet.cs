@@ -11,6 +11,8 @@ public class MovePlayerBullet : MonoBehaviour {
     public LayerMask layerMask;
     public GameObject dropItem;
 
+    public bool playerBullet = false;
+
     private bool isInArena = false;
 
     private Arena arena;
@@ -31,7 +33,7 @@ public class MovePlayerBullet : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        if (hit.CompareTag("Enemy"))
+        if (hit.CompareTag("Enemy") && playerBullet)
         {
             //dropItem.transform.position = transform.position;
             //Instantiate(dropItem);
@@ -46,7 +48,7 @@ public class MovePlayerBullet : MonoBehaviour {
             Destroy(other.gameObject);
 
         }
-        if (hit.gameObject.tag == "Player")
+        if (hit.gameObject.tag == "Player"&&!playerBullet)
         {
             PlayerManager.currentHealth--;
             Debug.Log("Player hit!");
