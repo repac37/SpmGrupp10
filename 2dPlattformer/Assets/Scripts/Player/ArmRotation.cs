@@ -10,7 +10,7 @@ public class ArmRotation : MonoBehaviour
 
     void Start()
     {
-        Transform clone = Instantiate(crosshair, new Vector2(transform.position.x + 10, transform.position.y), Quaternion.identity);
+        Transform clone = Instantiate(crosshair, new Vector2(transform.position.x + 5, transform.position.y), Quaternion.identity);
         crosshair = clone;
         crosshair.transform.parent = this.transform;
     }

@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontal: 1
-  speed: 1
+  speed: 0.5
   sinOffset: 3
   playerContanier: {fileID: 0}
   velocity: {x: 0, y: 0}

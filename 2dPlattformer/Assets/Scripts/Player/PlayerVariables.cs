@@ -3,11 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[SerializeField]
-public class PlayerVariables : MonoBehaviour {
+[CreateAssetMenu(menuName = "Stats/PlayerVariable")]
+public class PlayerVariables : ScriptableObject {
 
     [Header("Stats")]
     public int health;
-    public float maxFuel;
 
+    [Header("JetPack")]
+    public float maxFuel;
+    public float RefuelRate = 0.01f;
 }

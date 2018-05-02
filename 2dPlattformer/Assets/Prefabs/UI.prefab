@@ -398,7 +398,7 @@ MonoBehaviour:
   hp: 0
   ammo: 0
   jetfuel: 0
-  player: {fileID: 11400000, guid: 100188506123c40488924fc226f89f8a, type: 2}
+  playerManager: {fileID: 0}
 --- !u!114 &114402451856524280
 MonoBehaviour:
   m_ObjectHideFlags: 1

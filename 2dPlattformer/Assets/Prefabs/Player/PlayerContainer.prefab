@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 23499812600320680}
   - component: {fileID: 61388024799890014}
   - component: {fileID: 114653016167641580}
-  - component: {fileID: 114381845406493176}
   - component: {fileID: 50391424749965912}
   m_Layer: 0
   m_Name: Player
@@ -632,19 +631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
---- !u!114 &114381845406493176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742137971595672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30dc7da24a58867408eb2eb8e2b4e87b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 4
-  maxFuel: 3
 --- !u!114 &114454959224497648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,9 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849390fc60acc0a40ab3fd8794bba1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVar: {fileID: 114381845406493176}
+  playerVar: {fileID: 11400000, guid: c5f3cbdd683a17040b94452dc84a598f, type: 2}
   currentFuel: 0
-  currentHealth: 0
 --- !u!114 &114590964258818556
 MonoBehaviour:
   m_ObjectHideFlags: 1

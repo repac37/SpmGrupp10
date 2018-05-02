@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[SerializeField]
+
 public class PlayerManager : MonoBehaviour
 {
     public PlayerVariables playerVar;
     public float currentFuel;
+    public bool isRefuel = false;
     public static int currentHealth;
   
 
@@ -20,11 +21,14 @@ public class PlayerManager : MonoBehaviour
     public void Update()
     {
         Damage();
+        Refuel(isRefuel);
     }
 
-    public void Refuel()
+    public void Refuel(bool isRefuel)
     {
-        currentFuel = playerVar.maxFuel;
+        if (!isRefuel) return;
+        if (currentFuel >= playerVar.maxFuel) return;
+        currentFuel += playerVar.RefuelRate;
     }
 
     public void Fuel(float cost)
