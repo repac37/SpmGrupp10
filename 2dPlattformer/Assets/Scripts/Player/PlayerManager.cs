@@ -52,14 +52,14 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator Die()
     {
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<PlayerController>().enabled = false;
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(1f, 5f), ForceMode2D.Impulse);
-        transform.localScale = new Vector3(transform.localScale.x, -1f, 1f);
+        //GetComponent<Collider2D>().enabled = false;
+        //GetComponent<PlayerController>().enabled = false;
+        //GetComponent<Rigidbody2D>().AddForce(new Vector2(1f, 5f), ForceMode2D.Impulse);
+        //transform.localScale = new Vector3(transform.localScale.x, -1f, 1f);
         yield return new WaitForSeconds(2f);
         Respawn();
         SceneManager.LoadScene(0); // Load some scene YOLO
-                                   // Eller kalla på Respawn-funktionen vi har gjort? YOLO
+        //                           // Eller kalla på Respawn-funktionen vi har gjort? YOLO
     }
 
     public void Respawn()

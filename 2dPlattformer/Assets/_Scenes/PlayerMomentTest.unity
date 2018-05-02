@@ -715,6 +715,11 @@ Prefab:
       propertyPath: _orthographicCamera
       value: 
       objectReference: {fileID: 701443119}
+    - target: {fileID: 114674241505499860, guid: 14056d9a5a997334989fae75fdacd250,
+        type: 2}
+      propertyPath: regularCameraSize
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14056d9a5a997334989fae75fdacd250, type: 2}
   m_IsPrefabParent: 0

@@ -4908,6 +4908,7 @@ MonoBehaviour:
   patrolMovementSpeed: 3
   patrolStartWaitTime: 0
   detected: 0
+  canShoot: 0
   patrolPoints:
   - {fileID: 937264637}
   - {fileID: 264762549}
@@ -5603,6 +5604,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114644818475720898, guid: baf66dd42daee6a43af8a86e0fe7976d,
+        type: 2}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 4101124885005462, guid: 2ab76e1d17043ae48a73939879b19590,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: baf66dd42daee6a43af8a86e0fe7976d, type: 2}
   m_IsPrefabParent: 0

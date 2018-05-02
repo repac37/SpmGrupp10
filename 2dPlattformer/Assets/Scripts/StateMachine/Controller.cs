@@ -9,6 +9,7 @@ public abstract class Controller : MonoBehaviour
     [SerializeField] private State[] _states;
     private readonly Dictionary<Type, State> _stateDictionary = new Dictionary<Type, State>();
     public State CurrentState;
+    public State PreviousState;
 
     public void Awake()
     {
@@ -35,6 +36,7 @@ public abstract class Controller : MonoBehaviour
     public void TransitionTo<T>()
     {
         CurrentState.Exit();
+        PreviousState = CurrentState;
         CurrentState = GetState<T>() as State;
         CurrentState.Enter();
     }
