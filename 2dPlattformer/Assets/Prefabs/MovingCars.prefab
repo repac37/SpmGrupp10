@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 23354095755161236}
   - component: {fileID: 61298398134210748}
   - component: {fileID: 114232484536927184}
+  - component: {fileID: 114238925712729724}
   m_Layer: 8
   m_Name: Cube (23)
   m_TagString: Untagged
@@ -217,3 +218,19 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 4086289239810108}
   - {fileID: 4448201538883324}
+--- !u!114 &114238925712729724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430088680707588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103903d14c71e4a4ab028de07dfad72d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontal: 1
+  speed: 0
+  sinOffset: 3
+  playerContanier: {fileID: 0}
+  velocity: {x: 0, y: 0}
