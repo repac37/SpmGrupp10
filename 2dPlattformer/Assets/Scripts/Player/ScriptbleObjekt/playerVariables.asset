@@ -8,13 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99b940e556fc52446a10d6ab3f2aa87e, type: 3}
-  m_Name: JetpackState
+  m_Script: {fileID: 11500000, guid: 30dc7da24a58867408eb2eb8e2b4e87b, type: 3}
+  m_Name: playerVariables
   m_EditorClassIdentifier: 
-  FastFallingModifier: 0
-  Acceleration: 40
-  Friction: 5
-  jetPackAcceleration:
-    Min: 20
-    Max: 20
-  waitBeforeTransitionToGround: 0.5
+  health: 4
+  maxFuel: 3
+  RefuelRate: 0.1

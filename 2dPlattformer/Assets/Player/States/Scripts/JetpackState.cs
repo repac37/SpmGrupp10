@@ -14,12 +14,12 @@ public class JetpackState : State
     public float Acceleration;
     public float Friction;
     public MinMaxFloat jetPackAcceleration;
-    [Header("Fuel")]
-    public float jetPackFuelCost = 2f;
-    
 
-    private bool _hitGround = false;
     public float waitBeforeTransitionToGround = 1.0f;
+
+    private float jetPackFuelCost = 2f;
+    private bool _hitGround = false;
+    
     private float tmpWaitBeforeTransitionToGround;
 
     private List<Collider2D> _ignoredPlatforms = new List<Collider2D>();
@@ -63,9 +63,9 @@ public class JetpackState : State
                 _controller.TransitionTo<AirState>();
             }
 
-            //_controller.GetState<GroundState>().UpdateJetpack();
+           
             _controller.playerManager.Fuel(jetPackFuelCost * Time.deltaTime);
-            //Debug.Log(_controller.GetState<GroundState>().currentFuel);
+   
 
             RaycastHit2D[] hits = _controller.DetectHits();
 

@@ -45,9 +45,12 @@ public class MovablePlatform : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("enter");
-            // child the player to the trigger parent:
-            collision.transform.parent = this.transform;
+            if (collision.gameObject.GetComponent<PlayerController>().Velocity.y <= 0)
+            {
+                Debug.Log("enter");
+                // child the player to the trigger parent:
+                collision.transform.parent = this.transform;
+            }
          }
     }
 
