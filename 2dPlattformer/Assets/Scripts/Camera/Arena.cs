@@ -16,6 +16,9 @@ public class Arena : MonoBehaviour {
     public int arenaCameraSize = 10;
     public float sizeSpeed = 0.1f;
 
+    public AudioSource open_close;
+    public AudioClip open_closeSound;
+
     private void Start()
     {
         cam.arenaCameraSize = arenaCameraSize;
@@ -37,11 +40,16 @@ public class Arena : MonoBehaviour {
             // originalCamera = cam;
 
             if (lazer != null)
+            {
                 lazer.SetActive(true);
-
-            if(lazer2!=null)
+                if (!open_close.isPlaying)
+                    open_close.PlayOneShot(open_closeSound);
+            }
+            if (lazer2!=null)
             {
                 lazer2.SetActive(true);
+                if (!open_close.isPlaying)
+                    open_close.PlayOneShot(open_closeSound);
             }
             
         }
@@ -61,10 +69,14 @@ public class Arena : MonoBehaviour {
         }
         if(killcount==0 && exitLazer!=null){
            exitLazer.SetActive(false);
+            if (!open_close.isPlaying)
+                open_close.PlayOneShot(open_closeSound);
         }
         if (killcount == killcount2 && exitLazer2 != null)
         {
             exitLazer2.SetActive(false);
+            if(!open_close.isPlaying)
+            open_close.PlayOneShot(open_closeSound);
         }
     }
 

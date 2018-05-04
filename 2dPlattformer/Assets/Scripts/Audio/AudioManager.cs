@@ -126,8 +126,8 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            audioSources[0].volume = power/2;
-            audioSources[1].volume = power/2;
+            audioSources[0].volume = power/8;
+            audioSources[1].volume = power/8;
         }
 
         //    if (power < 0 && !end.isPlaying)
