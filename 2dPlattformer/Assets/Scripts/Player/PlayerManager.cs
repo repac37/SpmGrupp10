@@ -58,14 +58,14 @@ public class PlayerManager : MonoBehaviour
         //transform.localScale = new Vector3(transform.localScale.x, -1f, 1f);
         yield return new WaitForSeconds(2f);
         Respawn();
-        //SceneManager.LoadScene(0); // Load some scene YOLO
+        SceneManager.LoadScene(0); // Load some scene YOLO
         //                           // Eller kalla på Respawn-funktionen vi har gjort? YOLO
     }
 
     public void Respawn()
     {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("TestLevel01");
         currentHealth = playerVar.health;
 
         //gameObject.transform.position = startPos;
