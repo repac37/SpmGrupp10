@@ -31,6 +31,7 @@ public class GroundState : State {
     private int _jumps;
     private Vector2 _groundNormal;
     private Vector2 _vectorAlongGround
+    
     {
         get
         {

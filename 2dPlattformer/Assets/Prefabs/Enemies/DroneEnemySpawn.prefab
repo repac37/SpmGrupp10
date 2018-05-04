@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114600570637345824}
   - component: {fileID: 114196672206757132}
   - component: {fileID: 114708195878224102}
+  - component: {fileID: 82387863838554190}
   m_Layer: 10
   m_Name: DroneEnemySpawn
   m_TagString: Enemy
@@ -71,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361167073838542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.36166, y: 47.992935, z: -1.9097626}
+  m_LocalPosition: {x: -210.4464, y: 57.383377, z: -1.9097872}
   m_LocalScale: {x: 0.7333446, y: 0.7333446, z: 0.7333446}
   m_Children:
   - {fileID: 4803219952335290}
@@ -176,6 +177,87 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 13.492874
+--- !u!82 &82387863838554190
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361167073838542}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243911159609829900, guid: 9a65984eb0013ad4496faa1cf1e83794,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114196672206757132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,6 +311,11 @@ MonoBehaviour:
   timer: 2
   startTimer: 2
   parent: {fileID: 114196672206757132}
+  shots:
+  - {fileID: 8300000, guid: 1a9a81bb458df464d9a163b994dbac00, type: 3}
+  - {fileID: 8300000, guid: 29b26c0995f13a945b94ade41c798454, type: 3}
+  - {fileID: 8300000, guid: 748b10ef040dee44d87da2b8dceb1aa2, type: 3}
+  source: {fileID: 82387863838554190}
 --- !u!114 &114708195878224102
 MonoBehaviour:
   m_ObjectHideFlags: 1

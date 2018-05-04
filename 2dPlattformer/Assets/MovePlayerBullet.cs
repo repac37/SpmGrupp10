@@ -42,17 +42,19 @@ public class MovePlayerBullet : MonoBehaviour {
                 arena.killcount += -1;
                 Debug.Log("Arena kill");
             }
-            
 
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+
+            // Destroy(gameObject);
+             Destroy(other.gameObject);
+            
 
         }
         if (hit.gameObject.tag == "Player"&&!playerBullet)
         {
             PlayerManager.currentHealth--;
             Debug.Log("Player hit!");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+           // destroyBullet(gameObject);
 
         }
 
@@ -77,5 +79,6 @@ public class MovePlayerBullet : MonoBehaviour {
             
         }
     }
+
 
 }
