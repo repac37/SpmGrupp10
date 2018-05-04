@@ -10,12 +10,16 @@ public class Weapon : MonoBehaviour
     public static float ammo = 9999999999999;
 
 
+
     private float timeToFire = 0;
     private Transform firePoint;
 
     public Transform bulletTrailPrefab;
 
     public GameObject armed;
+
+    public AudioClip[] machineGun, gunShot;
+    public AudioSource source;
 
     //public LayerMask whatToHit;
 
@@ -46,7 +50,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            if (Input.GetAxis("RightTrigger")!=0 && Time.time > timeToFire && ammo > 0)
+            if (Input.GetAxis("RightTrigger") != 0 && Time.time > timeToFire && ammo > 0)
             {
                 timeToFire = Time.time + 1 / fireRate;
                 ProjectileShoot();
@@ -57,6 +61,7 @@ public class Weapon : MonoBehaviour
         {
             ammo = 999999999;
             armed.GetComponentInParent<Armed>().selectedWeapon = 0;
+
         }
     }
 
@@ -68,7 +73,7 @@ public class Weapon : MonoBehaviour
     //    Vector2 direction = new Vector2(inputX, inputY);
     //    direction.Normalize();
 
-        
+
     //    Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
     //    RaycastHit2D hit = Physics2D.Raycast(firePointPosition, direction, 100, whatToHit);
     //    if (Time.time >= timeToSpawnEffect)
@@ -87,11 +92,32 @@ public class Weapon : MonoBehaviour
 
     void ProjectileShoot()
     {
+
         Instantiate(bulletTrailPrefab, firePoint.position, firePoint.rotation);
 
         if (armed.GetComponentInParent<Armed>().selectedWeapon == 1)
         {
+
+            RandomSound(machineGun);
             ammo--;
         }
+
+        if (armed.GetComponentInParent<Armed>().selectedWeapon == 0)
+        {
+
+            RandomSound(gunShot);
+        }
+
+    }
+
+    void RandomSound(AudioClip[] sounds)
+    {
+        int coll = Random.Range(1, sounds.Length);
+        AudioClip clip = sounds[coll];
+        //  krocka.pitch = pitchSpeed * 0.5f;
+        source.PlayOneShot(sounds[coll]);
+        sounds[coll] = sounds[0];
+        sounds[0] = clip;
+        //   kwater.volume = 5.2f;
     }
 }
