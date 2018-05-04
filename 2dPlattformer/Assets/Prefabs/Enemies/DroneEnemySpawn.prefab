@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114600570637345824}
   - component: {fileID: 114196672206757132}
   - component: {fileID: 114708195878224102}
+  - component: {fileID: 114486196469189810}
   m_Layer: 10
   m_Name: DroneEnemySpawn
   m_TagString: Enemy
@@ -71,8 +72,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361167073838542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.36166, y: 47.992935, z: -1.9097626}
-  m_LocalScale: {x: 0.7333446, y: 0.7333446, z: 0.7333446}
+  m_LocalPosition: {x: 14.399574, y: -4.4782267, z: -6.1192293}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 0.7333446}
   m_Children:
   - {fileID: 4803219952335290}
   - {fileID: 4741712333549722}
@@ -175,7 +176,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 13.492874
+  m_Radius: 9
 --- !u!114 &114196672206757132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,6 +210,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 114196672206757132}
+--- !u!114 &114486196469189810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361167073838542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f94e1d0685a06c47959c8013da2b3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  spawnEnemy: 0
 --- !u!114 &114600570637345824
 MonoBehaviour:
   m_ObjectHideFlags: 1

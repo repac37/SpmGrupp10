@@ -11,6 +11,7 @@ TagManager:
   - OneWay
   - PlayerDetection
   - Arena
+  - Bullet
   layers:
   - Default
   - TransparentFX
