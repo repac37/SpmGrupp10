@@ -42,18 +42,27 @@ public class MovePlayerBullet : MonoBehaviour {
                 arena.killcount += -1;
                 Debug.Log("Arena kill");
             }
+<<<<<<< HEAD
 
             other.gameObject.GetComponent<EnemyManager>().health+=-1;
 
             Destroy(gameObject);
             //Destroy(other.gameObject);
+=======
+
+
+            // Destroy(gameObject);
+             Destroy(other.gameObject);
+            
+>>>>>>> b55f171b78bdcceb47a5a759b3abff7d1a961d3c
 
         }
         if (hit.gameObject.tag == "Player"&&!playerBullet)
         {
             PlayerManager.currentHealth--;
             Debug.Log("Player hit!");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+           // destroyBullet(gameObject);
 
         }
 
@@ -78,5 +87,6 @@ public class MovePlayerBullet : MonoBehaviour {
             
         }
     }
+
 
 }
