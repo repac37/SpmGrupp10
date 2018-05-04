@@ -45,7 +45,8 @@ public class MovePlayerBullet : MonoBehaviour {
             
 
             Destroy(gameObject);
-            Destroy(other.gameObject);
+            other.GetComponent<EnemyManager>().health--;
+            //Destroy(other.gameObject);
 
         }
         if (hit.gameObject.tag == "Player"&&!playerBullet)
