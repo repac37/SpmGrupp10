@@ -242,12 +242,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e645c89ee9d0b12449a6f48035ea2c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 10
   destroyTime: 4
   layerMask:
     serializedVersion: 2
     m_Bits: 0
   dropItem: {fileID: 0}
+  playerBullet: 0
 --- !u!120 &120554295633302846
 LineRenderer:
   m_ObjectHideFlags: 1
