@@ -107,26 +107,11 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 4447755692326576}
   m_Layer: 0
   m_Name: Path2
   m_TagString: Untagged
   m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
-=======
-  - component: {fileID: 4482151326888692}
-  - component: {fileID: 33496273465155038}
-  - component: {fileID: 23601367839562400}
-  - component: {fileID: 58233009501313368}
-  - component: {fileID: 114141923069188582}
-  - component: {fileID: 114873365426051494}
-  - component: {fileID: 114774711150900642}
-  - component: {fileID: 82991374821725186}
-  m_Layer: 10
-  m_Name: DroneEnemy
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
->>>>>>> b55f171b78bdcceb47a5a759b3abff7d1a961d3c
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -212,11 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1900201620446406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
   m_LocalPosition: {x: -94.4, y: 51.87, z: 0.46360338}
-=======
-  m_LocalPosition: {x: -311.64835, y: 75.79817, z: 0.17575598}
->>>>>>> b55f171b78bdcceb47a5a759b3abff7d1a961d3c
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4134672071619256}
@@ -501,92 +482,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!114 &114153184194256380
-=======
---- !u!82 &82991374821725186
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761789123761490}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243911159609829900, guid: 9a65984eb0013ad4496faa1cf1e83794,
-    type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 10
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &114141923069188582
->>>>>>> b55f171b78bdcceb47a5a759b3abff7d1a961d3c
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -597,7 +493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66662a30b911b814da3682448565283a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   maxFollowSpeed: 0
   minFollowSpeed: 0
   followDistance: 8
@@ -607,23 +502,6 @@ MonoBehaviour:
   canShoot: 0
   patrolPoints: []
 --- !u!114 &114196708330849536
-=======
-  Damage: 10
-  whatToHit:
-    serializedVersion: 2
-    m_Bits: 512
-  BulletTrailPrefab: {fileID: 4607335872775960, guid: a71399d20650e2c41a03951ab96d2f5e,
-    type: 2}
-  timer: 0.5
-  startTimer: 0.5
-  parent: {fileID: 114873365426051494}
-  shots:
-  - {fileID: 8300000, guid: 1a9a81bb458df464d9a163b994dbac00, type: 3}
-  - {fileID: 8300000, guid: 29b26c0995f13a945b94ade41c798454, type: 3}
-  - {fileID: 8300000, guid: 748b10ef040dee44d87da2b8dceb1aa2, type: 3}
-  source: {fileID: 82991374821725186}
---- !u!114 &114413875620011350
->>>>>>> b55f171b78bdcceb47a5a759b3abff7d1a961d3c
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
