@@ -30,6 +30,7 @@ public class ElevatorCamera : MonoBehaviour {
         //{
         //    return;
         //}
+        if (cam!=null) { 
         if(cam.enterdArena == true&&hasEnterd)
         //if(hasEnterd)
         {           
@@ -45,6 +46,7 @@ public class ElevatorCamera : MonoBehaviour {
             
             cam._targetPosition = cameraPosition;//startPosition.transform.position;
 
+        }
         }
         if (hasEnterd)
         {
@@ -71,14 +73,18 @@ public class ElevatorCamera : MonoBehaviour {
             if (!hasEnterd) {
                 cameraPosition = startPosition.transform.position;
                 cameraPosition.y += startPositionY;
+
             }
+            cameraPosition.z = -10;
 
             hasEnterd = true;
-            
-            cam.enterdArena = true;
-            cam.arenaCameraSize = arenaCameraSize;
-            cam.sizeSpeed = sizeSpeed;
-            //originalCamera = cam;
+            if (cam != null)
+            {
+                cam.enterdArena = true;
+                cam.arenaCameraSize = arenaCameraSize;
+                cam.sizeSpeed = sizeSpeed;
+                //originalCamera = cam;
+            }
 
             lazer.SetActive(true);
         }
@@ -109,7 +115,10 @@ public class ElevatorCamera : MonoBehaviour {
         if (collision.CompareTag("Player"))
         { Debug.Log("exit");
             // Spelaren har triggat cameratrigger
-            cam.enterdArena = false;
+            if (cam != null)
+            {
+                cam.enterdArena = false;
+            }
             //cam._targetPosition = new Vector3(cam._targetPosition.x, cam._targetPosition.y, cam._targetPosition.z);
             //positionY = 0;
         }
