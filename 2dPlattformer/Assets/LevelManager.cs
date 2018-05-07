@@ -13,6 +13,11 @@ public class LevelManager : MonoBehaviour {
 
     public List<GameObject> _enemies;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Use this for initialization
     void Start()
     {
