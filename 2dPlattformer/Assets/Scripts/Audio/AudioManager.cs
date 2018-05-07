@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 
 public class AudioManager : MonoBehaviour
@@ -12,10 +13,11 @@ public class AudioManager : MonoBehaviour
     private bool running = false;
     public float minDelay, maxDelay;
     private float jetFuel;
-    public AudioClip jetMain;
-    public AudioSource jet1, jet2;
+
 
     public PlayerManager playerManager;
+
+    public AudioMixerGroup jet;
 
 
 
@@ -39,6 +41,7 @@ public class AudioManager : MonoBehaviour
 
             child.transform.parent = gameObject.transform;
             audioSources[i] = child.AddComponent<AudioSource>();
+            audioSources[i].outputAudioMixerGroup = jet;
 
 
 
@@ -126,8 +129,8 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            audioSources[0].volume = power/8;
-            audioSources[1].volume = power/8;
+            audioSources[0].volume = power;
+            audioSources[1].volume = power;
         }
 
         //    if (power < 0 && !end.isPlaying)

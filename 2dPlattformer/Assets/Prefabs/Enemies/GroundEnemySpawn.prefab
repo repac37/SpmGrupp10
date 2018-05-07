@@ -210,7 +210,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1854342618170056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -216.28827, y: 32.64663, z: -1.9097626}
+  m_LocalPosition: {x: -120.164085, y: 43.065784, z: -0.2878474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4463201018664286}
@@ -515,7 +515,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  spawnEnemy: 1
+  shield: 0
+  hasShield: 0
+  TakeDamage: 1
+  weapon: {fileID: 0}
 --- !u!114 &114387802621447884
 MonoBehaviour:
   m_ObjectHideFlags: 1

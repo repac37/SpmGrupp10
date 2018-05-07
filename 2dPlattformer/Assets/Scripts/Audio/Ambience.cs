@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 
 public class Ambience : MonoBehaviour
@@ -12,6 +13,8 @@ public class Ambience : MonoBehaviour
     private bool running = false;
     public float minDelay, maxDelay;
     public AudioClip amb1, amb2;
+
+    public AudioMixerGroup ambLoop, ambRandomSound;
 
 
 
@@ -48,6 +51,10 @@ public class Ambience : MonoBehaviour
         running = true;
         audioSources[2].clip = amb1;
         audioSources[3].clip = amb2;
+        audioSources[0].outputAudioMixerGroup = ambLoop;
+        audioSources[1].outputAudioMixerGroup = ambLoop;
+        audioSources[2].outputAudioMixerGroup = ambRandomSound;
+        audioSources[3].outputAudioMixerGroup = ambRandomSound;
 
 
     }
