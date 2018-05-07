@@ -58,6 +58,7 @@ public class Bullet : MonoBehaviour
         if (hit.layer == 8)
         {
             Destroy(gameObject);
+
         }
 
         if ((hit.CompareTag("Enemy") || hit.CompareTag("EnemyMove")) && playerBullet)
