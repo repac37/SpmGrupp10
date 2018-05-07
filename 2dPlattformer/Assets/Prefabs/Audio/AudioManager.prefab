@@ -42,7 +42,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4284680949699150
 Transform:
   m_ObjectHideFlags: 1
@@ -88,10 +88,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 23a0999f790c220459976941e482a6bd, type: 3}
   minDelay: 0
   maxDelay: 0
-  jetMain: {fileID: 0}
-  jet1: {fileID: 0}
-  jet2: {fileID: 0}
   playerManager: {fileID: 0}
+  jet: {fileID: 243896565019226076, guid: 9a65984eb0013ad4496faa1cf1e83794, type: 2}
 --- !u!114 &114902209127905312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,3 +108,6 @@ MonoBehaviour:
   maxDelay: 10
   amb1: {fileID: 8300000, guid: 34b338d7f7e08a245b0d8f15e89c3b8b, type: 3}
   amb2: {fileID: 8300000, guid: 23a0999f790c220459976941e482a6bd, type: 3}
+  ambLoop: {fileID: 243515619222066460, guid: 9a65984eb0013ad4496faa1cf1e83794, type: 2}
+  ambRandomSound: {fileID: 243296951338019538, guid: 9a65984eb0013ad4496faa1cf1e83794,
+    type: 2}
