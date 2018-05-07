@@ -15,6 +15,7 @@ TagManager:
   - EnemyMove
   - Shield
   - PlayerBullet
+  - JetpackTrail
   layers:
   - Default
   - TransparentFX
