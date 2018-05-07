@@ -17,9 +17,13 @@ public class Spawner : MonoBehaviour {
     public float timer;
     public float startTimer;
 
+    public LevelManager _levelManager;
+
     // Use this for initialization
     void Start () {
         timer = startTimer;
+
+        _levelManager = FindObjectOfType<LevelManager>();
         //patrolPoints[0] = transform.Find("Patrol Point 7");//funkar också
     }
 	
@@ -55,7 +59,8 @@ public class Spawner : MonoBehaviour {
             ReferensEnemy.GetComponent<DronePatrolState>().patrolPoints = patrolPoints;
             ReferensEnemy.transform.position = spawnArea.transform.position;
             //ReferensEnemy.pat
-            Instantiate(ReferensEnemy);
+            GameObject enemy = Instantiate(ReferensEnemy);
+            AddToList(enemy);
             timer = startTimer;
         }
     }
@@ -67,5 +72,15 @@ public class Spawner : MonoBehaviour {
             isInArena = false;
 
         }
+    }
+
+    private void AddToList(GameObject referensEnemy)
+    {
+        _levelManager._enemies.Add(referensEnemy);
+    }
+
+    public void DestroySpawnedEnemies (GameObject enemy)
+    {
+        Destroy(enemy);
     }
 }
