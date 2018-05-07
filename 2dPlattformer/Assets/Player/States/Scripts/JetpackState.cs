@@ -19,12 +19,15 @@ public class JetpackState : State
 
     private float jetPackFuelCost = 2f;
     private bool _hitGround = false;
+
+    private bool initialHeight;
     
-    private float tmpWaitBeforeTransitionToGround;
 
     private List<Collider2D> _ignoredPlatforms = new List<Collider2D>();
 
     private PlayerController _controller;
+    private bool _wallhit;
+
     private Transform _transform { get { return _controller.transform; } }
     private Vector2 _velocity
     {
@@ -32,20 +35,21 @@ public class JetpackState : State
         set { _controller.Velocity = value; }
     }
 
-    private Vector2 _hitVelocity;
-     
+
+
     public override void Initialize(Controller owner)
     {
         _controller = (PlayerController)owner;
-       
+
     }
 
     public override void Enter()
     {
+        
         _transform.Translate(Vector3.up * 0.1f);
         _gravityTmp = _controller.Gravity;
         _controller.Gravity = 0;
-        tmpWaitBeforeTransitionToGround = waitBeforeTransitionToGround;
+        _controller.trail.gameObject.SetActive(true);
     }
 
 
@@ -63,9 +67,9 @@ public class JetpackState : State
                 _controller.TransitionTo<AirState>();
             }
 
-           
+
             _controller.playerManager.Fuel(jetPackFuelCost * Time.deltaTime);
-   
+
 
             RaycastHit2D[] hits = _controller.DetectHits();
 
@@ -79,6 +83,7 @@ public class JetpackState : State
             }
 
             UpdateNormalForce(hits);
+
             _transform.Translate(_velocity * Time.deltaTime);
         }
         else
@@ -86,7 +91,7 @@ public class JetpackState : State
             _controller.TransitionTo<AirState>();
         }
 
-        
+
 
     }
 
@@ -96,12 +101,7 @@ public class JetpackState : State
         if (hits.Length == 0) return; //Kollar om vi träffar nått
 
         _controller.SnapToHit(hits[0]);  //kollar om vi ska snappa till marken
-        
-        if (hits[0].collider.CompareTag("Floor"))
-        {
-            _hitGround = true;
-        }
- 
+
         //kollar om marken är rätt inom till låten vinkel
         foreach (RaycastHit2D hit in hits)
         {
@@ -114,15 +114,21 @@ public class JetpackState : State
             if (_ignoredPlatforms.Contains(hit.collider))
                 continue;
 
-           // Debug.Log("jet: " + _velocity);
-            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
-            
-            if (MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
+            if (hit.normal.x != 0)            
+                _wallhit = true;
+            else
+                _wallhit = false;
+
+            if (hit.collider.CompareTag("EnemyMove"))
             {
-                if (tmpWaitBeforeTransitionToGround <= 0.0f)
-                {
-                    _controller.TransitionTo<GroundState>();
-                }
+                _velocity += hit.collider.gameObject.GetComponent<MiniBossController>().Velocity;
+            }
+
+            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+
+            if (MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
+            {                
+                _controller.TransitionTo<GroundState>();
             }
         }
     }
@@ -132,48 +138,37 @@ public class JetpackState : State
         float verticalInput = Input.GetAxisRaw("Vertical");
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
-    
+        Vector2 delta;
 
         if (Mathf.Abs(verticalInput) > _controller.InputMagnitudeToMove)
         {
-            if (!_hitGround || (_hitGround && verticalInput >= 0.1))
-            {
-                Vector2 delta = Vector2.up * (verticalInput == 0 ? 1 : verticalInput) * jetPackAcceleration.Max;
-                _velocity += delta;
-                _hitGround = false;
-                tmpWaitBeforeTransitionToGround = waitBeforeTransitionToGround;
-            }
-            else
-            {
-                tmpWaitBeforeTransitionToGround -= 1f * Time.deltaTime;
-            
-                _velocity = Vector2.zero;
-            }
-        }
-        else if (Mathf.Abs(verticalInput) < _controller.InputMagnitudeToMove && Mathf.Abs(horizontalInput) > _controller.InputMagnitudeToMove)
-        {
-            _velocity = Vector2.zero;
-            tmpWaitBeforeTransitionToGround = waitBeforeTransitionToGround;
-        }
-        else
-        {
-            _velocity += Vector2.up * jetPackAcceleration.Min;
-            tmpWaitBeforeTransitionToGround = waitBeforeTransitionToGround;
-        }
-
-
-        if (Mathf.Abs(horizontalInput) > _controller.InputMagnitudeToMove)
-        {
-            Vector2 delta = Vector2.right * (horizontalInput == 0 ? 1 : horizontalInput) * jetPackAcceleration.Max;
+            delta = Vector2.up * verticalInput * jetPackAcceleration.Max;
             _velocity += delta;
         }
 
-        
+        if (Mathf.Abs(horizontalInput) > _controller.InputMagnitudeToMove)
+        {        
+            delta = Vector2.right * horizontalInput * jetPackAcceleration.Max;
+            _velocity += delta;
+        }
+
+        if(_wallhit && Mathf.Abs(verticalInput) < _controller.InputMagnitudeToMove)
+        {
+            delta = Vector2.up * jetPackAcceleration.Min;
+            _velocity += delta;
+        }
+
+        if (Mathf.Abs(verticalInput) < _controller.InputMagnitudeToMove && Mathf.Abs(horizontalInput) < _controller.InputMagnitudeToMove)
+        {
+            delta = Vector2.up * jetPackAcceleration.Max;
+            _velocity += delta;
+        }
 
     }
 
     public override void Exit()
     {
+        _controller.trail.gameObject.SetActive(false);
         _hitGround = false;
         _controller.Gravity = _gravityTmp;
     }

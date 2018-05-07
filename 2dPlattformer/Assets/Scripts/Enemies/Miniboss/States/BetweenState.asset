@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe8e52508e7baf4f9c0b36bf70ab03a, type: 3}
+  m_Name: BetweenState
+  m_EditorClassIdentifier: 
+  shield: 0
+  shieldColor: {r: 0, g: 1, b: 1, a: 1}
+  shieldTrigger: {fileID: 0}
+  shieldDownMiniBoss: {fileID: 0}
+  shieldCoroutine: 0
+  moveSpeed: 10

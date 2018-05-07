@@ -56,4 +56,8 @@ public static class MathHelper
         return delta;
     }
 
+    public static float GetDistanceInX(Vector2 v0, Vector2 v1)
+    {
+        return v1.x - v0.x;
+    }
 }

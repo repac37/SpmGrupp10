@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "States/GroundState")]
-public class GroundState : State {
+public class GroundState : State
+{
 
     private PlayerController _controller;
 
@@ -23,6 +25,8 @@ public class GroundState : State {
     public float TimeToJumpApex;
     [HideInInspector]
     public MinMaxFloat JumpVelocity; // bestäms av gravitation och TimeToJumpApex
+
+    private List<Collider2D> _ignoredPlatforms = new List<Collider2D>();
 
     [Header("Jetpack")]
     public float reloadJetpack = 1f;
@@ -48,7 +52,7 @@ public class GroundState : State {
     {
         _controller = (PlayerController)owner;
         //bestämmer gravitation efter hopp höjden och hopptiden 
-        _controller.Gravity = (2 * JumpHeight.Max) / (TimeToJumpApex* TimeToJumpApex);
+        _controller.Gravity = (2 * JumpHeight.Max) / (TimeToJumpApex * TimeToJumpApex);
         //bestämmer hoppet max hastighet
         JumpVelocity.Max = _controller.Gravity * TimeToJumpApex;
         JumpVelocity.Min = Mathf.Sqrt(2 * _controller.Gravity * JumpHeight.Min);
@@ -62,7 +66,7 @@ public class GroundState : State {
 
     public override void Update()
     {
-       
+
         UpdateGravity();
         RaycastHit2D[] hits = _controller.DetectHits(true);
         if (hits.Length == 0)
@@ -70,14 +74,15 @@ public class GroundState : State {
             TransitionToAir();
             return;
         }
+
         //ytnormal
         UpdateGroundNormal(hits);
         //rörelse normalen
         UpdateMovement();
         UpdateNormalForce(hits);
         _transform.Translate(_velocity * Time.deltaTime);
-      
-        
+
+
         UpdateJump();
         UpdateJetpack();
 
@@ -94,31 +99,21 @@ public class GroundState : State {
         _groundNormal = Vector2.zero;
         foreach (RaycastHit2D hit in hits)
         {
-            //if (hit.collider.CompareTag("MovingPlatform"))
-            //{
-            //    onMovingPlateForm = true;
-            //    hitVelocity = hit.collider.GetComponent<MovablePlatform>().velocity;
-            //    float dirX = Math.Sign(hitVelocity.x);
-            //    float dirY = Math.Sign(hitVelocity.y);
-            //    float pushX = (dirY == 1) ? hitVelocity.x : 0;
-            //    float pushY = hitVelocity.y - hit.distance * dirY;
-            //    _velocity = new Vector2(pushX, pushY);
-            //}
-            //Stämmer av lutningen om den är inom vår ram fortsätter.
             if (!MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
                 continue;
 
             _groundNormal += hit.normal;
             numberOfGroundHits++;
-        }
-        if (numberOfGroundHits == 0)
-        {
-            TransitionToAir();
-            return;
-        }
 
-        _groundNormal /= numberOfGroundHits;
-        _groundNormal.Normalize();
+            if (numberOfGroundHits == 0)
+            {
+                TransitionToAir();
+                return;
+            }
+
+            _groundNormal /= numberOfGroundHits;
+            _groundNormal.Normalize();
+        }
     }
 
     private void UpdateNormalForce(RaycastHit2D[] hits)
@@ -132,9 +127,26 @@ public class GroundState : State {
         {
             if (Mathf.Approximately(_velocity.magnitude, 0.0f)) continue;
 
-      
-                _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
-            
+
+            if (hit.collider.gameObject.layer == 12)
+            {
+                if (hit.normal.y == 0)
+                {
+                    try
+                    {
+                        _velocity += hit.collider.gameObject.GetComponent<MiniBossController>().Velocity * 1.2f;
+                    }
+                    catch (NullReferenceException e)
+                    {
+                        Debug.Log("Enemy part did not have MiniBossController");
+                    }
+                }
+
+            }
+            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+
+
+
         }
     }
 
@@ -165,15 +177,15 @@ public class GroundState : State {
 
         Vector2 newVelocity = _velocity + deltaVelocity;
         // kollar om den ny acceleration är större än max hastighet
-        if(newVelocity.magnitude > _controller.MaxSpeed)
+        if (newVelocity.magnitude > _controller.MaxSpeed)
         {
             _velocity = _vectorAlongGround * MathHelper.Sign(_velocity.x) * _controller.MaxSpeed;
         }
         else
         {
-            _velocity = newVelocity; 
+            _velocity = newVelocity;
         }
-        
+
     }
 
     private void Decelerate()
@@ -196,12 +208,12 @@ public class GroundState : State {
     public void UpdateJump()
     {
         if (!Input.GetButtonDown("LeftBumper") || _jumps <= 0) return;
-       
-            _transform.position += Vector3.up * InitialJumpDistance;
-            _controller.Velocity.y = JumpVelocity.Max;
-            _controller.GetState<AirState>().CanCancelJump = true;
-            TransitionToAir();
-   
+
+        _transform.position += Vector3.up * InitialJumpDistance;
+        _controller.Velocity.y = JumpVelocity.Max;
+        _controller.GetState<AirState>().CanCancelJump = true;
+        TransitionToAir();
+
     }
 
     private void TransitionToAir()
@@ -212,16 +224,16 @@ public class GroundState : State {
 
     public void UpdateJetpack()
     {
-        
+
         float VerticalInput = Input.GetAxis("Vertical");
-        if (Input.GetAxis("LeftTrigger") == 0 || VerticalInput < 0 ) return;
+        if (Input.GetAxis("LeftTrigger") == 0 || VerticalInput < 0) return;
         if (_controller.playerManager.currentFuel < _controller.playerManager.playerVar.maxFuel) return;
         TransitionToJetPack();
     }
 
     private void TransitionToJetPack()
     {
-         _controller.TransitionTo<JetpackState>();
+        _controller.TransitionTo<JetpackState>();
     }
 
     public override void Exit()

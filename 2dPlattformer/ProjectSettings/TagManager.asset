@@ -12,6 +12,7 @@ TagManager:
   - PlayerDetection
   - Arena
   - Bullet
+  - EnemyMove
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Obstacle
   - Player
   - Enemy
-  - 
+  - EnemyMove
   - 
   - 
   - 

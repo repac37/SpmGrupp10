@@ -4,7 +4,8 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "States/AirState")]
-public class AirState : State    {
+public class AirState : State
+{
 
     [Header("Movement")]
     public float FastFallingModifier = 2f;
@@ -64,12 +65,12 @@ public class AirState : State    {
 
     private void UpdateNormalForce(RaycastHit2D[] hits)
     {
-        
+
         if (hits.Length == 0) return; //Kollar om vi träffar nått
 
-       
+
         RaycastHit2D snapHit = hits.FirstOrDefault(h => !h.collider.CompareTag("OneWay"));
-        
+
         if (snapHit.collider != null)
         {
             _controller.SnapToHit(snapHit);
@@ -77,7 +78,7 @@ public class AirState : State    {
 
         //kollar om marken är rätt inom till låten vinkel
         foreach (RaycastHit2D hit in hits)
-        {            
+        {
 
             if (hit.collider.CompareTag("OneWay") && _velocity.y > 0.0f && !_ignoredPlatforms.Contains(hit.collider))
             {
@@ -87,9 +88,9 @@ public class AirState : State    {
             if (_ignoredPlatforms.Contains(hit.collider))
                 continue;
 
-          
-           _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
-            
+
+            _velocity += MathHelper.GetNormalForce(_velocity, hit.normal);
+
             if (MathHelper.CheckAllowedSlope(_controller.SlopeAngles, hit.normal))
                 _controller.TransitionTo<GroundState>();
         }
@@ -113,7 +114,7 @@ public class AirState : State    {
             Vector2 currentDirection = Vector2.right * MathHelper.Sign(_velocity.x);
             float horizontalVelocity = Vector2.Dot(_velocity.normalized, currentDirection) *
            _velocity.magnitude;
-           _velocity -= currentDirection * horizontalVelocity * Friction * Time.deltaTime;
+            _velocity -= currentDirection * horizontalVelocity * Friction * Time.deltaTime;
         }
     }
 

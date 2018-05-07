@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,8 +34,9 @@ public class MovePlayerBullet : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        if (hit.CompareTag("Enemy") && playerBullet)
+        if ((hit.CompareTag("Enemy")|| hit.CompareTag("EnemyMove")) && playerBullet)
         {
+            EnemyManager manager = hit.GetComponent<EnemyManager>();
             //dropItem.transform.position = transform.position;
             //Instantiate(dropItem);
             if (isInArena)
@@ -42,10 +44,18 @@ public class MovePlayerBullet : MonoBehaviour {
                 arena.killcount += -1;
                 Debug.Log("Arena kill");
             }
-            
+
+            try
+            {
+                manager.HitDamage(1);
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.Log("Enemy did not have manager.hitDamage()");
+            }
 
             Destroy(gameObject);
-            other.GetComponent<EnemyManager>().health--;
+            //other.GetComponent<EnemyManager>().health--;
             //Destroy(other.gameObject);
 
         }

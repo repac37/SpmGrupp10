@@ -4,57 +4,40 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
 
-    public int health;
+    public int health = 1;
+    public int shield = 0;
+    public bool hasShield = false;
+    public bool TakeDamage = true;
 
-	public bool spawnEnemy = false;
+    public WeaponData weapon;
 
-    /*public GameObject shield;
-    public int aktivateShield;
-    public GameObject weekPoint;
-    public int curentShieldHealth;
-    public int shieldHealth;
-	
-    public float timer;
-    public float startTimer;
-	*/
-
-    // Use this for initialization
-    void Start () {
-        //timer = 0;
-		//plasera fiende i lista om inte en spawnEnemy
-        
-    }
-	
-	// Update is called once per frame
-	void Update () {
-
-        if (health == 0)
+    private void Start()
+    {
+        if (shield > 0)
         {
-			if (spawnEnemy)
-				Destroy (gameObject);
-			else if (!spawnEnemy)
-				gameObject.SetActive (false);
-				
+            hasShield = true;
         }
-        /*if (health<=aktivateShield&&shield!=null)
+    }
+
+
+    public void HitDamage(int damage)
+    {
+        if (TakeDamage)
         {
-            //Debug.Log(curentShieldHealth+" "+timer);
-            if (timer <= 0)
+            if (hasShield && shield > 0)
             {
-                shield.SetActive(true);
-                weekPoint.SetActive(true);
-                timer = startTimer;
-                curentShieldHealth = shieldHealth ;
+                shield -= damage;
+
+                if (shield == 0)
+                    hasShield = false;
             }
 
-            if (curentShieldHealth==0)
+            if (!hasShield && health > 0)
             {
-                
-                shield.SetActive(false);
-                weekPoint.SetActive(false);
-                timer -= Time.deltaTime;
-
+                health -= damage;
+                if (health == 0)
+                    Destroy(this.gameObject);
             }
-		}*/
-	}
+        }
+    }
 }
