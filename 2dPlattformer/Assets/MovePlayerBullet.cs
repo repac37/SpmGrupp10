@@ -36,6 +36,7 @@ public class MovePlayerBullet : MonoBehaviour {
 
         if ((hit.CompareTag("Enemy")|| hit.CompareTag("EnemyMove")) && playerBullet)
         {
+            BossManager bossmanager = hit.GetComponent<BossManager>();
             EnemyManager manager = hit.GetComponent<EnemyManager>();
             //dropItem.transform.position = transform.position;
             //Instantiate(dropItem);
@@ -48,10 +49,21 @@ public class MovePlayerBullet : MonoBehaviour {
             try
             {
                 manager.HitDamage(1);
+                Debug.Log("enemy");
             }
             catch (NullReferenceException e)
             {
-                Debug.Log("Enemy did not have manager.hitDamage()");
+                //Debug.Log("Enemy did not have manager.hitDamage()");
+            }
+
+            try
+            {
+                bossmanager.HitDamage(1);
+                Debug.Log("boss");
+            }
+            catch (NullReferenceException e)
+            {
+                // Debug.Log("Enemy did not have bossmanager.hitDamage()");
             }
 
             gameObject.SetActive(false);

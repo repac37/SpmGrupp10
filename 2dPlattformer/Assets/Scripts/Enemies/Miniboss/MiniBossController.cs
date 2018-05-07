@@ -22,9 +22,9 @@ public class MiniBossController : Controller {
     public CollisionInfo collisions;
     public Transform[] AttackPoints;
     public Transform[] PatrolPoints;
-    public EnemyManager manager;
+    public BossManager manager;
     public Transform target; 
-    
+
 
 
     private float _horizontalRaySpacing;
@@ -156,7 +156,7 @@ public class MiniBossController : Controller {
     {
         if (collision.CompareTag("Player"))
         {
-            //PlayerManager.currentHealth--;
+            PlayerManager.currentHealth--;
             PlayerController p = collision.gameObject.GetComponent<PlayerController>();
             //Vector3 vel = p.Velocity;
             //p.transform.InverseTransformVector(vel*20);

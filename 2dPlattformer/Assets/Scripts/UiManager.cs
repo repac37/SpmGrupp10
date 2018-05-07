@@ -18,16 +18,18 @@ public class UiManager : MonoBehaviour
     public float ammo;
     public float jetfuel = 0;
     public PlayerManager playerManager;
-    
+
 
     // Use this for initialization
-    void Start () {
-        
-        
+    void Start()
+    {
+
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         hp = PlayerManager.currentHealth;
 
@@ -40,13 +42,13 @@ public class UiManager : MonoBehaviour
         fuelSlider.maxValue = playerManager.playerVar.maxFuel;
         fuelSlider.minValue = 0.0f;
         fuelSlider.value = jetfuel;
-        
- 
-            if (hp >= 0)
-            {
-                healthUI.sprite = healthSprites[hp];
-            }
- 
+
+
+        if (hp >= 0)
+        {
+            healthUI.sprite = healthSprites[hp];
+        }
+
         if (ammo > 100)
         {
             ammoText.text = "Ammo: INF";

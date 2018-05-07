@@ -9808,11 +9808,6 @@ Prefab:
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 886938227}
-    - target: {fileID: 114341860738209372, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: hp
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224694650356652648, guid: cdcb960d06aac8043973aca2e598f1cb,
         type: 2}
       propertyPath: m_AnchorMax.y
@@ -9823,47 +9818,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114027009269573910, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: m_MaxValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114341860738209372, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: healthSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300008, guid: 898244f31589ad14d9558863e4cfeebe,
-        type: 3}
-    - target: {fileID: 114341860738209372, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: healthSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300006, guid: 898244f31589ad14d9558863e4cfeebe,
-        type: 3}
-    - target: {fileID: 114341860738209372, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: healthSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300004, guid: 898244f31589ad14d9558863e4cfeebe,
-        type: 3}
-    - target: {fileID: 114341860738209372, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: healthSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300002, guid: 898244f31589ad14d9558863e4cfeebe,
-        type: 3}
-    - target: {fileID: 114341860738209372, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: healthSprites.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: 898244f31589ad14d9558863e4cfeebe,
-        type: 3}
-    - target: {fileID: 114622997150749044, guid: cdcb960d06aac8043973aca2e598f1cb,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 898244f31589ad14d9558863e4cfeebe,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cdcb960d06aac8043973aca2e598f1cb, type: 2}
   m_IsPrefabParent: 0

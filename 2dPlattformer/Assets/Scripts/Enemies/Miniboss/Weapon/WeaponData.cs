@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/weapon")]
 public class WeaponData : ScriptableObject {
 
-
-
     public string hitTarget;
     public Vector2 gravity;
     public Vector2 velocity;

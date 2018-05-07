@@ -64,21 +64,34 @@ public class Bullet : MonoBehaviour
         if ((hit.CompareTag("Enemy") || hit.CompareTag("EnemyMove")) && playerBullet)
         {
             EnemyManager manager = hit.GetComponent<EnemyManager>();
+            BossManager bossmanager = hit.GetComponent<BossManager>();
+
             //dropItem.transform.position = transform.position;
             //Instantiate(dropItem);
             if (isInArena)
             {
                 arena.killcount += -1;
-                Debug.Log("Arena kill");
+                //Debug.Log("Arena kill");
             }
 
             try
             {
                 manager.HitDamage(1);
+                Debug.Log("enemy");
             }
             catch (NullReferenceException e)
             {
-                Debug.Log("Enemy did not have manager.hitDamage()");
+                //Debug.Log("Enemy did not have manager.hitDamage()");
+            }
+
+            try
+            {
+                bossmanager.HitDamage(1);
+                Debug.Log("boss");
+            }
+            catch (NullReferenceException e)
+            {
+                // Debug.Log("Enemy did not have bossmanager.hitDamage()");
             }
 
             Destroy(gameObject);
@@ -89,7 +102,7 @@ public class Bullet : MonoBehaviour
         if (hit.gameObject.tag == "Player" && !playerBullet)
         {
             PlayerManager.currentHealth--;
-            Debug.Log("Player hit!");
+            //Debug.Log("Player hit!");
             Destroy(gameObject);
 
         }

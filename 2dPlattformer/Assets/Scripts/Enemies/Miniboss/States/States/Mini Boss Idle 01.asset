@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: Mini Boss Idle 01
   m_EditorClassIdentifier: 
   aimOffset: {x: 0, y: 0}
-  switchHealth: 5
+  switchHealth: 10
   transitionTime: 5
   weapon: {fileID: 11400000, guid: 43e45b311014b224e9ce015e173e5800, type: 2}
-  startTime: 2
-  fireRate: 1
-  nextFire: 0
+  startTime: 5
+  fireRate: 0.5
   shootcount: 0
+  rotationSpeed: 5

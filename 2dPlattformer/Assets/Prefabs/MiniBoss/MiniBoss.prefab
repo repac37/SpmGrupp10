@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836836885393286}
   - component: {fileID: 114552396927145770}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Aim
   m_TagString: EnemyMove
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4000529484505476}
   - component: {fileID: 33745604206088968}
   - component: {fileID: 23064751556764112}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Quad
   m_TagString: EnemyMove
   m_Icon: {fileID: 0}
@@ -116,13 +116,13 @@ GameObject:
   - component: {fileID: 23014319519711426}
   - component: {fileID: 61796721742117136}
   - component: {fileID: 114382642856835480}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: ShieldTrigger
   m_TagString: EnemyMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1770510116590584
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,8 +148,8 @@ GameObject:
   - component: {fileID: 4693434487449010}
   - component: {fileID: 61458146723087644}
   - component: {fileID: 114728917411889370}
-  - component: {fileID: 114057879285004610}
-  m_Layer: 12
+  - component: {fileID: 114152057017311508}
+  m_Layer: 11
   m_Name: BossBody
   m_TagString: EnemyMove
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4391994601198970}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: SecondeState
   m_TagString: EnemyMove
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4184459900506824}
   - component: {fileID: 33251556721322320}
   - component: {fileID: 23805069733373980}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Body
   m_TagString: EnemyMove
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770518781972214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.9, y: -2.2, z: 0}
+  m_LocalPosition: {x: 0.5580906, y: -5.7500005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4836836885393286}
@@ -320,7 +320,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309779751477158}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.85759807, w: 0.51432055}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -355,7 +355,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: d406ee8f39c62d9409db26cf13ff3348, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -389,7 +389,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a75164462ce26cc4b85884718138c188, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -473,7 +473,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -514,7 +514,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114057879285004610
+--- !u!114 &114152057017311508
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -522,13 +522,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1770518781972214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f94e1d0685a06c47959c8013da2b3fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b5147dd0fe3c69438bdf9a2c9bfc4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 0
   shield: 0
   hasShield: 0
-  TakeDamage: 1
+  TakeDamage: 0
   weapon: {fileID: 11400000, guid: 43e45b311014b224e9ce015e173e5800, type: 2}
 --- !u!114 &114382642856835480
 MonoBehaviour:
@@ -541,8 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a241c53b93ac64193754ba10f635f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamage: 0
-  isSheild: 1
+  takeDamage: 1
+  isSheild: 0
 --- !u!114 &114552396927145770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -573,22 +573,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 176e9b0952f9886439867448e7151c52, type: 2}
   - {fileID: 11400000, guid: 5746578a32236614385f389fa1aa7f32, type: 2}
   - {fileID: 11400000, guid: d718e1c15258855478c674ac985f76ff, type: 2}
+  - {fileID: 11400000, guid: 035cc3601f66fbf4785cfb85aed0d8a8, type: 2}
   CurrentState: {fileID: 0}
   PreviousState: {fileID: 0}
-  health: 100
-  Gravity: -20
+  health: 0
+  Gravity: 0
   Velocity: {x: 0, y: 0}
-  Collider: {fileID: 0}
+  Collider: {fileID: 61458146723087644}
   horizontalRayCount: 4
   verticalRayCount: 4
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   AttackPoints:
   - {fileID: 4964071966871930}
   PatrolPoints:
   - {fileID: 4354400492664056}
   - {fileID: 4514365383474488}
   - {fileID: 4002061021344974}
-  manager: {fileID: 114057879285004610}
+  manager: {fileID: 114152057017311508}
   target: {fileID: 0}
