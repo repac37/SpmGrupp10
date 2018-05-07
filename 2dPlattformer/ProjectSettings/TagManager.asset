@@ -14,6 +14,7 @@ TagManager:
   - Bullet
   - EnemyMove
   - Shield
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

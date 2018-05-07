@@ -35,6 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4656578440204410}
   - component: {fileID: 114535778458541600}
+  - component: {fileID: 114061787773739140}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1242,6 +1243,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 114535778458541600}
+--- !u!114 &114061787773739140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007246948451184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9eec963e6a131a4c9e63a7cc0ba7ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToPool:
+  - objectToPool: {fileID: 1355665342736726, guid: b572e023eea4c9b41a6685341b639129,
+      type: 2}
+    amountToPool: 25
+    shouldExpand: 1
+  pooledObjects: []
 --- !u!114 &114077425836963700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1406,7 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fb211de24e22541bd8e7d9ff2efd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCheckpoint: {fileID: 0}
+  startCheckpoint: {fileID: 1019227706123892}
   currentCheckPoint: {fileID: 0}
   _enemies: []
 --- !u!114 &114607846841830158

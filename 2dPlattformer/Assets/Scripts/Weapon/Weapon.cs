@@ -93,7 +93,13 @@ public class Weapon : MonoBehaviour
     void ProjectileShoot()
     {
 
-        Instantiate(bulletTrailPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = ObjectPooler.sharedInstance.GetPooledObject("PlayerBullet");
+        if (bullet != null)
+        {
+            bullet.transform.position = firePoint.transform.position;
+            bullet.transform.rotation = firePoint.transform.rotation;
+            bullet.SetActive(true);
+        }
 
         if (armed.GetComponentInParent<Armed>().selectedWeapon == 1)
         {

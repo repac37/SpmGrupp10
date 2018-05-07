@@ -7,7 +7,7 @@ public class MovePlayerBullet : MonoBehaviour {
      
     public int moveSpeed = 230;
 
-    public float destroyTime = 0;
+    //public float destroyTime = 0;
 
     public LayerMask layerMask;
     public GameObject dropItem;
@@ -22,7 +22,7 @@ public class MovePlayerBullet : MonoBehaviour {
     void Update()
     {
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
-        Destroy(gameObject, destroyTime);
+        //Destroy(gameObject, destroyTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -31,7 +31,7 @@ public class MovePlayerBullet : MonoBehaviour {
 
         if (hit.layer == 8)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         if ((hit.CompareTag("Enemy")|| hit.CompareTag("EnemyMove")) && playerBullet)
@@ -54,7 +54,7 @@ public class MovePlayerBullet : MonoBehaviour {
                 Debug.Log("Enemy did not have manager.hitDamage()");
             }
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             //other.GetComponent<EnemyManager>().health--;
             //Destroy(other.gameObject);
 
@@ -63,7 +63,7 @@ public class MovePlayerBullet : MonoBehaviour {
         {
             PlayerManager.currentHealth--;
             Debug.Log("Player hit!");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
 
         }
 
