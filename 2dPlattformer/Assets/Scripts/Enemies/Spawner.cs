@@ -18,6 +18,8 @@ public class Spawner : MonoBehaviour {
     public float startTimer;
 
     public LevelManager _levelManager;
+    public AudioSource src;
+    public AudioClip spawn;
 
     // Use this for initialization
     void Start () {
