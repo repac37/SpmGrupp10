@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     private int flip = 0;
     private AudioSource[] audioSources = new AudioSource[2];
     private bool running = false;
-    public float minDelay, maxDelay;
     private float jetFuel;
 
 
