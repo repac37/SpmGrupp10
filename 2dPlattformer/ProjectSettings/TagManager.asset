@@ -15,6 +15,9 @@ TagManager:
   - EnemyMove
   - Shield
   - PlayerBullet
+  - ElevatorArena
+  - JetpackTrail
+  - Pickup
   layers:
   - Default
   - TransparentFX

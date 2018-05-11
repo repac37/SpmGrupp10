@@ -18,6 +18,9 @@ public class FinalBossRespawn : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        _levelManager.RespawnPlayer();
+        if (other.CompareTag("Player"))
+        {
+            _levelManager.RespawnPlayer();
+        }
     }
 }

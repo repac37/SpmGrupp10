@@ -13,10 +13,15 @@ public class PlayerManager : MonoBehaviour
     public GameObject player;
 
 
+
+    public LevelManager _levelManager;
+
     void Start()
     {
         currentHealth = playerVar.health;
         currentFuel = playerVar.maxFuel;
+
+        _levelManager = FindObjectOfType<LevelManager>(); 
     }
 
     public void Update()
@@ -46,7 +51,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (currentHealth < 1)
         {
-            StartCoroutine(Die());
+            //StartCoroutine(Die());
+            Respawn();
         }
 
     }
@@ -58,14 +64,20 @@ public class PlayerManager : MonoBehaviour
         Respawn();
 
         SceneManager.LoadScene(0);   
-            }
+    }
 
     public void Respawn()
     {
 
         //SceneManager.LoadScene("TestLevel01");
-        currentHealth = playerVar.health;
-
+        
+        _levelManager.RespawnPlayer();
     }
+
+    public void ResetPlayer()
+    {
+        currentHealth = playerVar.health;
+    }
+    
 
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed:
     Min: 10
-    Max: 15
+    Max: 20
   accelerationTimeGround: 0.1
   moveDistance: 20

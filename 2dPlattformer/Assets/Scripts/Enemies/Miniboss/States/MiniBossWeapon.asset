@@ -14,10 +14,10 @@ MonoBehaviour:
   hitTarget: Player
   gravity: {x: 0, y: 0}
   velocity: {x: 0, y: 0}
-  speed: 0
+  speed: 20
   fireRate: 0
-  shootLength: 40
-  damage: 0
+  shootLength: 0
+  damage: 1
   ammos: 
   bullet: {fileID: 1752069212345318, guid: 2539c6e864989ad4180ee361089390ab, type: 2}
   destroyTime: 4

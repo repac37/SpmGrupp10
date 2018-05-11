@@ -711,6 +711,10 @@ MonoBehaviour:
   _levelManager: {fileID: 0}
   src: {fileID: 0}
   spawn: {fileID: 0}
+  rend: {fileID: 23527220736987696}
+  mat1: {fileID: 2100000, guid: 733d2e623a0e18e41b0d6c40aabf0512, type: 2}
+  mat2: {fileID: 2100000, guid: 7c8aeb4c50d641e4dac38790bdb93b2d, type: 2}
+  mat3: {fileID: 2100000, guid: 86bbfdd946876364c91b88844f2cb68b, type: 2}
 --- !u!114 &114877556575804188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,3 +737,7 @@ MonoBehaviour:
   _levelManager: {fileID: 0}
   src: {fileID: 0}
   spawn: {fileID: 0}
+  rend: {fileID: 23527220736987696}
+  mat1: {fileID: 2100000, guid: 733d2e623a0e18e41b0d6c40aabf0512, type: 2}
+  mat2: {fileID: 2100000, guid: 7c8aeb4c50d641e4dac38790bdb93b2d, type: 2}
+  mat3: {fileID: 2100000, guid: 86bbfdd946876364c91b88844f2cb68b, type: 2}

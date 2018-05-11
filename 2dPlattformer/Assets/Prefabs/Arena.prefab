@@ -339,7 +339,10 @@ MonoBehaviour:
   exitLazer2: {fileID: 0}
   killcount: 1
   killcount2: 1
+  savedKillcount: 0
+  savedKillcount2: 0
   arenaCameraSize: 5
   sizeSpeed: 0.1
   open_close: {fileID: 0}
   open_closeSound: {fileID: 0}
+  levelManager: {fileID: 0}

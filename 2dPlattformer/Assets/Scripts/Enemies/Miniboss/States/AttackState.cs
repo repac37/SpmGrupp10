@@ -39,7 +39,7 @@ public class AttackState : State {
         _direction = _moveTo - _startPosition;
         _direction.Normalize();
         _isAttacking = true;
-        _controller.manager.TakeDamage = false;
+  
     }
 
     public override void Update()
@@ -63,7 +63,7 @@ public class AttackState : State {
 
     public override void Exit()
     {
-        _controller.manager.TakeDamage = true;
+       
         _controller.Velocity.x = 0;
     }
 
@@ -96,12 +96,13 @@ public class AttackState : State {
             if (MathHelper.GetDistanceInX(_controller.transform.position, _startPosition) > 0.05f)
             {
                 _controller.Velocity.x = Mathf.SmoothDamp(_controller.Velocity.x, targetVelocityX, ref _velocityXSmoothing, accelerationTimeGround);
+                _controller.GetState<MiniBossIdle01>().ShootRoutine();
             }
             else
             {
-                Debug.Log("transition");
                 _controller.TransitionTo<MiniBossIdle01>();
             }
+
         }
     }
 

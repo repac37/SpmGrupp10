@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361167073838542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -87.50075, y: 41.138466, z: -6.1192293}
+  m_LocalPosition: {x: -60.36166, y: 47.992935, z: -1.9097626}
   m_LocalScale: {x: 1.3, y: 1.3, z: 0.7333446}
   m_Children:
   - {fileID: 4803219952335290}
@@ -271,10 +271,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  currentHealth: 0
   shield: 0
   hasShield: 0
   TakeDamage: 1
+  spawnedEnemy: 1
   weapon: {fileID: 0}
+  rend: {fileID: 23023225683619344}
+  mat1: {fileID: 2100000, guid: 62ef7c1da8aa6044ba29ca0187e7a0f4, type: 2}
+  mat2: {fileID: 2100000, guid: fe997f8330aea3b43a7843b22203a468, type: 2}
+  mat3: {fileID: 2100000, guid: 86bbfdd946876364c91b88844f2cb68b, type: 2}
+  mat4: {fileID: 2100000, guid: 7c8aeb4c50d641e4dac38790bdb93b2d, type: 2}
+  deathTimer: 0.3
+  damageTimer: 0.1
+  meleCountdown: 0
+  meleCountdownStart: 1
 --- !u!114 &114196672206757132
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -389,11 +389,11 @@ MonoBehaviour:
   fuelSlider: {fileID: 114027009269573910}
   ammoText: {fileID: 114402451856524280}
   healthSprites:
-  - {fileID: 21300008, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300006, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300004, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300002, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
-  - {fileID: 21300000, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  - {fileID: 21300008, guid: 898244f31589ad14d9558863e4cfeebe, type: 3}
+  - {fileID: 21300006, guid: 898244f31589ad14d9558863e4cfeebe, type: 3}
+  - {fileID: 21300004, guid: 898244f31589ad14d9558863e4cfeebe, type: 3}
+  - {fileID: 21300002, guid: 898244f31589ad14d9558863e4cfeebe, type: 3}
+  - {fileID: 21300000, guid: 898244f31589ad14d9558863e4cfeebe, type: 3}
   healthUI: {fileID: 114622997150749044}
   hp: 0
   ammo: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6bffd74cf36425f4fb3bda0b92a699a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 898244f31589ad14d9558863e4cfeebe, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

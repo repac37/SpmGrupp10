@@ -179,7 +179,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1947789890639874}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.109838, y: 15.352964, z: -1.1289062}
+  m_LocalPosition: {x: 17.480007, y: -31.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4330774082831420}
@@ -485,7 +485,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  spawnEnemy: 0
+  currentHealth: 0
+  shield: 0
+  hasShield: 0
+  TakeDamage: 1
+  spawnedEnemy: 0
+  weapon: {fileID: 0}
+  rend: {fileID: 23925441756894536}
+  mat1: {fileID: 2100000, guid: 62ef7c1da8aa6044ba29ca0187e7a0f4, type: 2}
+  mat2: {fileID: 2100000, guid: fe997f8330aea3b43a7843b22203a468, type: 2}
+  mat3: {fileID: 2100000, guid: 86bbfdd946876364c91b88844f2cb68b, type: 2}
+  mat4: {fileID: 2100000, guid: 7c8aeb4c50d641e4dac38790bdb93b2d, type: 2}
+  deathTimer: 0.3
+  damageTimer: 0.1
+  meleCountdown: 0
+  meleCountdownStart: 1
 --- !u!114 &114185719266459348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,8 +517,8 @@ MonoBehaviour:
     m_Bits: 512
   BulletTrailPrefab: {fileID: 4607335872775960, guid: a71399d20650e2c41a03951ab96d2f5e,
     type: 2}
-  timer: 0.5
-  startTimer: 0.5
+  timer: 1
+  startTimer: 1
   parent: {fileID: 114338092871750458}
   shots:
   - {fileID: 8300000, guid: 1a9a81bb458df464d9a163b994dbac00, type: 3}

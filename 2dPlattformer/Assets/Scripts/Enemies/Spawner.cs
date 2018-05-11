@@ -21,6 +21,9 @@ public class Spawner : MonoBehaviour {
     public AudioSource src;
     public AudioClip spawn;
 
+    public Renderer rend;
+    public Material mat1, mat2, mat3;
+
     // Use this for initialization
     void Start () {
         timer = startTimer;
@@ -35,7 +38,7 @@ public class Spawner : MonoBehaviour {
         if (isInArena)
         {
             timer -= Time.deltaTime;
-
+            rend.material = mat2;
             Spawn();
         }
 		
@@ -46,7 +49,8 @@ public class Spawner : MonoBehaviour {
        
         if (other.gameObject.tag == "Player")
         {
-            isInArena = true;         
+            isInArena = true;
+            
 
         }
 
@@ -54,6 +58,10 @@ public class Spawner : MonoBehaviour {
 
     private void Spawn()
     {
+        if (timer<=0.5)
+        {
+            rend.material = mat3;
+        }
         if(timer <= 0){ 
             //dronePatrol = ReferensEnemy.GetComponent<DronePatrolState>();
             //ReferensEnemy.GetComponent<DronePatrolState>().patrolPoints[0] = patrolPoints[0];
@@ -61,9 +69,11 @@ public class Spawner : MonoBehaviour {
             ReferensEnemy.GetComponent<DronePatrolState>().patrolPoints = patrolPoints;
             ReferensEnemy.transform.position = spawnArea.transform.position;
             //ReferensEnemy.pat
+            
             GameObject enemy = Instantiate(ReferensEnemy);
             AddToList(enemy);
             timer = startTimer;
+            rend.material = mat2;
         }
     }
 
@@ -72,9 +82,11 @@ public class Spawner : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             isInArena = false;
+            rend.material = mat1;
 
         }
     }
+
 
     private void AddToList(GameObject referensEnemy)
     {
@@ -83,6 +95,6 @@ public class Spawner : MonoBehaviour {
 
     public void DestroySpawnedEnemies (GameObject enemy)
     {
-        Destroy(enemy);
+        Destroy(enemy);        
     }
 }

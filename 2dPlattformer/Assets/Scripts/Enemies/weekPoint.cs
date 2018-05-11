@@ -17,7 +17,7 @@ public class weekPoint : MonoBehaviour {
 	}
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Bullet")&& other.gameObject.GetComponent<MovePlayerBullet>().playerBullet)
+        if (other.gameObject.CompareTag("PlayerBullet")&& other.gameObject.GetComponent<MovePlayerBullet>().playerBullet)
         {
             parentEnemy.GetComponent<ShieldManager>().curentShieldHealth += -1;
         }

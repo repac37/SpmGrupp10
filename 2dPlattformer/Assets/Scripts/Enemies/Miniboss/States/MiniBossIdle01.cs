@@ -21,10 +21,10 @@ public class MiniBossIdle01 : State
 
  
     public float fireRate = 10;  // The number of bullets fired per second
-    public float nextFire;   // The value of Time.time at the last firing moment
+    private float nextFire;   // The value of Time.time at the last firing moment
 
     public int shootcount = 0;
-   
+    public float rotationSpeed = 5;
         
 
 
@@ -35,24 +35,23 @@ public class MiniBossIdle01 : State
         _controller.Gravity = -30;
         _aim = _controller.transform.GetChild(0);
         _controller.manager.TakeDamage = false;
-
+    
     }
 
     public override void Enter()
     {
-        _controller.StartCoroutine(StartTime());
-       
 
+        _controller.StartCoroutine(StartTime());
+        shootcount = 0;
     }
 
     public override void Update()
     {
 
-   
         _controller.UpdateHealth();
         if (start)
         {
-            if (shootcount < 4)
+            if (shootcount < 30)
             {
                 ShootRoutine();
             }
@@ -79,17 +78,10 @@ public class MiniBossIdle01 : State
         shootcount = 0;
     }
 
-
     public void ShootRoutine()
     {
-        
-        Vector3 toTargetVector = _controller.target.position - _aim.transform.position;
-        float zRotation = Mathf.Atan2(toTargetVector.y, toTargetVector.x) * Mathf.Rad2Deg;
-        _aim.transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRotation));
+        RotateWeapon();
 
-        //Vector3 direction = _controller.target.position- _aim.transform.position;
-        //Quaternion rotation = Quaternion.LookRotation(direction);
-        //_aim.transform.rotation = rotation;
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
@@ -97,39 +89,13 @@ public class MiniBossIdle01 : State
             Shoot();
         }
 
-        //if (!_shootOne && !_shootTwo)
-        //{
-        //    _aim.transform.Rotate((Vector3.forward * 5) * Time.deltaTime);
+    }
 
-        //    if (_aim.transform.rotation.eulerAngles.z >= 3.5f)
-        //    {
-        //        _shootOne = true;
-        //        Shoot();
-        //    }
-        //}
-
-        //if (_shootOne && !_shootTwo)
-        //{
-        //    _aim.transform.Rotate(-(Vector3.forward * 5) * Time.deltaTime);
-        //    if (_aim.transform.rotation.eulerAngles.z <= 356.5f && _aim.transform.rotation.eulerAngles.z > 3.5)
-        //    {
-        //        _shootTwo = true;
-        //        Shoot();
-        //    }
-        //}
-
-        //if (_shootOne && _shootTwo)
-        //{ 
-        //    if (_aim.transform.rotation.eulerAngles.z != 0)
-        //    {
-        //        _aim.transform.Rotate((Vector3.forward * 5) * Time.deltaTime);
-        //        if (_aim.transform.rotation.eulerAngles.z > 359.8 || _aim.transform.rotation.eulerAngles.z < 0.2f)
-        //        {
-        //            _aim.transform.rotation = Quaternion.identity;
-        //        }
-        //    }
-
-        //}
+    private void RotateWeapon()
+    {
+        Vector3 toTargetVector = _controller.target.position - _aim.transform.position;
+        float zRotation = Mathf.Atan2(toTargetVector.y, toTargetVector.x) * Mathf.Rad2Deg;
+        _aim.transform.rotation = Quaternion.Lerp(_aim.transform.rotation, Quaternion.Euler(0, 0, zRotation), Time.deltaTime * rotationSpeed);
     }
 
     private void Shoot()
@@ -137,13 +103,6 @@ public class MiniBossIdle01 : State
        Instantiate(weapon.bullet, _aim.position, _aim.rotation);
         
     }
- 
-
-    //IEnumerator IsShooting()
-    //{
-    //    yield return new WaitForSeconds(transitionTime/3);
-    //    _isShooting = true;
-    //}
 
    public void TransitionToAttack()
     {

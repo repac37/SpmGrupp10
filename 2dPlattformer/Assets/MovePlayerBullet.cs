@@ -36,23 +36,41 @@ public class MovePlayerBullet : MonoBehaviour {
 
         if ((hit.CompareTag("Enemy")|| hit.CompareTag("EnemyMove")) && playerBullet)
         {
+            BossManager bossmanager = hit.GetComponent<BossManager>();
             EnemyManager manager = hit.GetComponent<EnemyManager>();
             //dropItem.transform.position = transform.position;
             //Instantiate(dropItem);
-            if (isInArena)
-            {
-                arena.killcount += -1;
-                Debug.Log("Arena kill");
-            }
+            
 
             try
             {
                 manager.HitDamage(1);
+                Debug.Log("enemy");
             }
             catch (NullReferenceException e)
             {
-                Debug.Log("Enemy did not have manager.hitDamage()");
+                //Debug.Log("Enemy did not have manager.hitDamage()");
             }
+
+            try
+            {
+                bossmanager.HitDamage(1);
+                Debug.Log("boss");
+            }
+            catch (NullReferenceException e)
+            {
+                // Debug.Log("Enemy did not have bossmanager.hitDamage()");
+            }
+
+            if (isInArena)
+            {
+                if (other.GetComponent<EnemyManager>().currentHealth==0) {
+                    arena.killcount += -1;
+                    Debug.Log("Arena kill");
+
+                }
+            }
+
 
             gameObject.SetActive(false);
             //other.GetComponent<EnemyManager>().health--;

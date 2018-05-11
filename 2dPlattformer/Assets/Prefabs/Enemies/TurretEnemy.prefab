@@ -386,7 +386,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  spawnEnemy: 0
+  currentHealth: 0
+  shield: 0
+  hasShield: 0
+  TakeDamage: 1
+  spawnedEnemy: 0
+  weapon: {fileID: 0}
+  rend: {fileID: 23151446425323860}
+  mat1: {fileID: 2100000, guid: 62ef7c1da8aa6044ba29ca0187e7a0f4, type: 2}
+  mat2: {fileID: 2100000, guid: fe997f8330aea3b43a7843b22203a468, type: 2}
+  mat3: {fileID: 2100000, guid: 86bbfdd946876364c91b88844f2cb68b, type: 2}
+  deathTimer: 0.3
+  damageTimer: 0.1
 --- !u!114 &114794578569614634
 MonoBehaviour:
   m_ObjectHideFlags: 1

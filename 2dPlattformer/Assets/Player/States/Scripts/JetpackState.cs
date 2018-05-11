@@ -8,6 +8,7 @@ public class JetpackState : State
 {
     private float _gravityTmp;
 
+    ParticleSystem jetpackParticles;
 
     [Header("Movement")]
     public float FastFallingModifier = 2f;
@@ -40,12 +41,11 @@ public class JetpackState : State
     public override void Initialize(Controller owner)
     {
         _controller = (PlayerController)owner;
-
+        jetpackParticles = GameObject.Find("trail").GetComponent<ParticleSystem>();
     }
 
     public override void Enter()
-    {
-        
+    { 
         _transform.Translate(Vector3.up * 0.1f);
         _gravityTmp = _controller.Gravity;
         _controller.Gravity = 0;
@@ -60,7 +60,7 @@ public class JetpackState : State
         if (Input.GetAxisRaw("LeftTrigger") != 0)
         {
             _controller.Velocity = Vector2.zero;
-
+            jetpackParticles.Play();
 
             if (_controller.playerManager.currentFuel <= 0)
             {
@@ -168,6 +168,7 @@ public class JetpackState : State
 
     public override void Exit()
     {
+        jetpackParticles.Stop();
         _controller.trail.gameObject.SetActive(false);
         _hitGround = false;
         _controller.Gravity = _gravityTmp;

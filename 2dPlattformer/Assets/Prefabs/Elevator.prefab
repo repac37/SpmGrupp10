@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114907181563864536}
   m_Layer: 0
   m_Name: Elevator
-  m_TagString: Untagged
+  m_TagString: Arena
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   lazer: {fileID: 1926072390960690}
+  lazerStartPosition: {x: 0, y: 0}
   arenaCameraSize: 20
   sizeSpeed: 0.5
   cameraPositionSpeed: 4

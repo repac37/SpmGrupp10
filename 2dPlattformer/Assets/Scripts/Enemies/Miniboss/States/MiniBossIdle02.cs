@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "States/Miniboss/MiniBossIdle02")]
 public class MiniBossIdle02 : State {
 
+    public float shieldDownTime;
     public bool shield;
     public Color shieldColor = Color.cyan;
     public Transform shieldTrigger;
@@ -45,7 +46,6 @@ public class MiniBossIdle02 : State {
         shieldTrigger = _controller.transform.Find("SecondeState");
         shieldTrigger = shieldTrigger.transform.Find("ShieldTrigger");
         shieldDownMiniBoss= shieldTrigger.GetComponent<ShieldDownMiniBoss>();
-        shieldDownMiniBoss.takeDamage = true;
         _patrolIndex = 1;
 
     }
@@ -62,6 +62,7 @@ public class MiniBossIdle02 : State {
 
     public override void Update()
     {
+        _controller.UpdateHealth();
         SheildHit();
         if (_IsElipseAttack)
         {
@@ -71,7 +72,10 @@ public class MiniBossIdle02 : State {
         {
             PatrolState();
         }
-        //PlayerInsite();
+        _controller.GetState<MiniBossIdle01>().ShootRoutine();
+
+        if (_controller.health == 0)
+            _controller.TransitionTo<DeathState>();
     }
 
   
@@ -100,7 +104,7 @@ public class MiniBossIdle02 : State {
 
     private IEnumerator ShieldDown()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(shieldDownTime);
         shieldDownMiniBoss.isSheild = true;
         _controller.manager.TakeDamage = false;
         shieldCoroutine = false;
@@ -108,8 +112,7 @@ public class MiniBossIdle02 : State {
 
     private void PatrolState()
     {
-        Debug.Log("patroll");
-        
+              
         _controller.transform.position = Vector3.MoveTowards(_controller.transform.position, _controller.PatrolPoints[_patrolIndex].position, speed * Time.deltaTime);
 
         if (Vector2.Distance(_controller.transform.position, _controller.PatrolPoints[_patrolIndex].position) < 0.5f)
@@ -125,8 +128,6 @@ public class MiniBossIdle02 : State {
                     if (patrolCount > 2)
                         _IsElipseAttack = true;
                 }
-
-                
             }
             else
             {
@@ -167,7 +168,6 @@ public class MiniBossIdle02 : State {
         }
         if (!clockwise)
         {
-
             OrbitProgress -= Time.deltaTime * orbitSpeed;
             Debug.Log("!clockwise" + OrbitProgress);
             if (OrbitProgress < 0.25f)
@@ -204,15 +204,5 @@ public class MiniBossIdle02 : State {
        
     }
 
-   //private void PlayerInsite()
-   // {
-   //     RaycastHit2D[] hits = Physics2D.BoxCastAll(_controller.transform.position, new Vector2(10, 2), 0.0f, Vector2.down, 20f, CollisionLayers);
-   //     Debug.DrawRay(_controller.transform.position, Vector2.down*20, Color.green);
-   //     foreach (var hit in hits)
-   //     {
-   //         _controller.TransitionTo<DropAttackStat>();
-   //     }
-        
-   // }
 }
 

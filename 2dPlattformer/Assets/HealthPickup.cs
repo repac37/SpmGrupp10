@@ -19,7 +19,10 @@ public class HealthPickup : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             PlayerManager.currentHealth = 4;
-            Destroy(gameObject);
+
+            gameObject.SetActive(false);
+
+            //Destroy(gameObject);
         }
     }
 }

@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f93f9e442d17a45a43b36a01e68edb, type: 3}
   m_Name: Mini Boss Idle 02
   m_EditorClassIdentifier: 
+  shieldDownTime: 5
   shield: 0
   shieldColor: {r: 0, g: 1, b: 1, a: 1}
   shieldTrigger: {fileID: 4380242269650710, guid: 95ff50409f9f57849b33b30bff8425d9,
