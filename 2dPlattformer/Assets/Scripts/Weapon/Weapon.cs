@@ -9,26 +9,17 @@ public class Weapon : MonoBehaviour
     public float damage = 10;
     public static float ammo = 9999999999999;
 
-
-
     private float timeToFire = 0;
     private Transform firePoint;
-
-    public Transform bulletTrailPrefab;
 
     public GameObject armed;
 
     public AudioClip[] machineGun, gunShot;
     public AudioSource source;
 
-    //public LayerMask whatToHit;
+    public bool isShotgun = false;
 
-    //public float effectSpawnRate = 10;
-
-    // private float timeToSpawnEffect = 0;
-
-
-    // Use this for initialization
+    
     void Awake()
     {
         firePoint = transform.Find("FirePoint");
@@ -38,7 +29,6 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (fireRate == 0 && ammo > 0)
@@ -57,7 +47,7 @@ public class Weapon : MonoBehaviour
             }
         }
 
-        if (ammo == 0 && armed.GetComponentInParent<Armed>().selectedWeapon == 1)
+        if (ammo == 0 && (armed.GetComponentInParent<Armed>().selectedWeapon == 1 || armed.GetComponentInParent<Armed>().selectedWeapon == 2))
         {
             ammo = 999999999;
             armed.GetComponentInParent<Armed>().selectedWeapon = 0;
@@ -65,46 +55,45 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    //void Shoot()
-    //{
-    //    float inputX = Input.GetAxis("HorizontalRightStick");
-    //    float inputY = Input.GetAxis("VerticalRightStick");
-
-    //    Vector2 direction = new Vector2(inputX, inputY);
-    //    direction.Normalize();
-
-
-    //    Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-    //    RaycastHit2D hit = Physics2D.Raycast(firePointPosition, direction, 100, whatToHit);
-    //    if (Time.time >= timeToSpawnEffect)
-    //    {
-    //        Effect();
-    //        timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
-    //    }
-    //    Debug.DrawLine(firePointPosition, direction * 100, Color.cyan);
-    //    if (hit.collider != null)
-    //    {
-    //        Debug.DrawLine(firePointPosition, hit.point, Color.red);
-    //        Debug.Log("We hit " + hit.collider.name + " and did " + damage + " damage.");
-    //        Destroy(hit.collider.gameObject);
-    //    }
-    //}
-
     void ProjectileShoot()
     {
-
-        GameObject bullet = ObjectPooler.sharedInstance.GetPooledObject("PlayerBullet");
-        if (bullet != null)
+        if (isShotgun)
         {
-            bullet.transform.position = firePoint.transform.position;
-            bullet.transform.rotation = firePoint.transform.rotation;
-            bullet.SetActive(true);
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject bullet = ObjectPooler.sharedInstance.GetPooledObject("PlayerBullet");
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.transform.position + new Vector3(0, i);
+                    bullet.transform.rotation = firePoint.transform.rotation;
+                    bullet.SetActive(true);
+                }
+            }
         }
+
+        if(!isShotgun)
+        {
+            GameObject bullet = ObjectPooler.sharedInstance.GetPooledObject("PlayerBullet");
+            if (bullet != null)
+            {
+                bullet.transform.position = firePoint.transform.position;
+                bullet.transform.rotation = firePoint.transform.rotation;
+                bullet.SetActive(true);
+            }
+        }
+        
 
         if (armed.GetComponentInParent<Armed>().selectedWeapon == 1)
         {
 
             RandomSound(machineGun);
+            ammo--;
+        }
+
+        if (armed.GetComponentInParent<Armed>().selectedWeapon == 2)
+        {
+
+            //RandomSound(machineGun); Lägga in ljud för shotgun
             ammo--;
         }
 

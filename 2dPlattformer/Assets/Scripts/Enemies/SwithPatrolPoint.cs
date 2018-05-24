@@ -26,10 +26,10 @@ public class SwithPatrolPoint : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		health = parentEnemy.GetComponent<EnemyManager> ().health;
-		Debug.Log(parentEnemy.GetComponent<EnemyManager>().health+" "+healthSwitch+" "+aktivatedStage);
+		health = parentEnemy.GetComponent<EnemyManager> ().startHealth;
+		//Debug.Log(parentEnemy.GetComponent<EnemyManager>().currentHealth+" "+healthSwitch+" "+aktivatedStage);
 		//timer -= Time.deltaTime;
-		if(parentEnemy.GetComponent<EnemyManager>().health==healthSwitch&&!aktivatedStage){
+		if(parentEnemy.GetComponent<EnemyManager>().currentHealth==healthSwitch&&!aktivatedStage){
 		//if(timer<=0){
 			//healthSwitch+=10;
 			aktivatedStage=true;

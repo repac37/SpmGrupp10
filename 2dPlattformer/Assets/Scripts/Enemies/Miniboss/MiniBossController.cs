@@ -5,8 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class MiniBossController : Controller {
 
-    public float health;
-   
+    private float health;
 
     public float Gravity = -20; // Gravity är gravitationen som appliceras på spelaren bestämms i ground
     public Vector2 Velocity; //Velocity är spelarens nuvarande hastighet också i units/sekund
@@ -23,18 +22,38 @@ public class MiniBossController : Controller {
     public Transform[] AttackPoints;
     public Transform[] PatrolPoints;
     public BossManager manager;
-    public Transform target; 
+    public Transform target;
+    public Transform BulletPrefab;
 
+    public float shieldDownTime = 3f;
 
+    private Transform startPos;
+
+    public float startTime = 2f;
+    public float timer;
 
     private float _horizontalRaySpacing;
     private float _verticalRaySpacing;
+    private float meleCountdown;
+    private float meleCountdownStart = 3;
 
     private void Start()
     {
+       
         Collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
-        health = manager.health;
+        startPos = transform;
+        GameObject tmp = GameObject.FindGameObjectWithTag("Player");
+        target = tmp.transform;
+    }
+
+    private void OnEnable()
+    {
+        timer = startTime;
+    }
+    private void OnDisable()
+    {
+        timer = startTime;
     }
 
     public void Move(Vector2 velocity)
@@ -122,11 +141,6 @@ public class MiniBossController : Controller {
         _verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
     }
 
-    public void UpdateHealth()
-    {
-        health = manager.health;
-    }
-
     private Bounds GetSkinWidth()
     {
         Bounds bounds = Collider.bounds;
@@ -151,15 +165,26 @@ public class MiniBossController : Controller {
             left = right = false;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerManager.currentHealth--;
+            collision.gameObject.GetComponent<PlayerManager>().Damage();
             PlayerController p = collision.gameObject.GetComponent<PlayerController>();
-            //Vector3 vel = p.Velocity;
-            //p.transform.InverseTransformVector(vel*20);
+        }
+        meleCountdown = meleCountdownStart;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            meleCountdown -= Time.deltaTime;
+            if (meleCountdown <= 0)
+            {
+                collision.gameObject.GetComponent<PlayerManager>().Damage();
+                meleCountdown = meleCountdownStart;
+            }
         }
     }
 }

@@ -4,24 +4,16 @@ using UnityEngine;
 
 public class ShieldDownMiniBoss : MonoBehaviour {
 
-    public bool takeDamage = false;
-    public bool isSheild = true; 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool hitShield = false;
+
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            if(takeDamage)
-                isSheild = false;
+            Debug.Log("hitShield");
+            hitShield = true;
         }
     }
 }

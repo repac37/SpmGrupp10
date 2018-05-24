@@ -5,12 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "States/Miniboss/Between")]
 public class BetweenIdle01To02 : State {
 
-    public bool shield;
-    public Color shieldColor = Color.cyan;
-    public Transform shieldTrigger;
-    public ShieldDownMiniBoss shieldDownMiniBoss;
-    public bool shieldCoroutine;
-    private Renderer _bodyRender;
+
+    public Color shieldColor;
+
     private MiniBossController _controller;
 
     private Vector2 _moveTo;
@@ -19,19 +16,13 @@ public class BetweenIdle01To02 : State {
     public override void Initialize(Controller owner)
     {
         _controller = (MiniBossController)owner;
-        Transform _body = _controller.transform.Find("Body");
-        _bodyRender = _body.gameObject.GetComponent<Renderer>();
-        shieldTrigger = _controller.transform.Find("SecondeState");
-        shieldTrigger = shieldTrigger.transform.Find("ShieldTrigger");
-        shieldDownMiniBoss = shieldTrigger.GetComponent<ShieldDownMiniBoss>();
     }
 
     public override void Enter()
     {
-        _bodyRender.material.color = Color.cyan;
-        shieldTrigger.gameObject.SetActive(true);
-        _controller.manager.TakeDamage = false;
-        shieldCoroutine = false;
+        _controller.manager.bodyRender.sprite = _controller.manager.bossSprites[1];
+        _controller.manager.gameObject.SetActive(true);
+        _controller.manager.setTakeDamage(false);
         _moveTo = _controller.PatrolPoints[1].position;
         
     }
@@ -40,6 +31,7 @@ public class BetweenIdle01To02 : State {
     {
         MovetoPosition();
         _controller.Move(_controller.Velocity * Time.deltaTime);
+        _controller.manager.bodyRender.sprite = _controller.manager.bossSprites[1];
     }
 
     private void MovetoPosition()
@@ -61,5 +53,7 @@ public class BetweenIdle01To02 : State {
     public override void Exit()
     {
         _controller.Velocity = Vector2.zero;
+        _controller.manager.setTakeDamage(false);
+        _controller.manager.sheild.hitShield = false;
     }
 }

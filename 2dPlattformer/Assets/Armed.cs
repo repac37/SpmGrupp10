@@ -6,16 +6,13 @@ public class Armed : MonoBehaviour {
 
 
     public int selectedWeapon = 0;
-    
 
 
-    // Use this for initialization
     void Start()
     {
         SelectWeapon();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -26,13 +23,18 @@ public class Armed : MonoBehaviour {
             
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            selectedWeapon = 2;
+            Weapon.ammo = 100;
+
+        }
+
         if (Input.GetKeyDown(KeyCode.O))
         {
             selectedWeapon = 0;
             Weapon.ammo = 9999999999999;
         }
-
-       // Debug.Log("Vapen " + selectedWeapon);
 
         SelectWeapon();
     }
@@ -42,11 +44,28 @@ public class Armed : MonoBehaviour {
         int i = 0;
         foreach (Transform weapon in transform)
         {
-            if (i == selectedWeapon)
-                weapon.gameObject.SetActive(true);
-            else
-                weapon.gameObject.SetActive(false);
-            i++;
+            if( weapon.GetComponent<Weapon>() != null)
+            {
+                if (i == selectedWeapon)
+                    weapon.gameObject.SetActive(true);
+                else
+                    weapon.gameObject.SetActive(false);
+                i++;
+            }
+           
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "WeaponPickup")
+        {
+            if (selectedWeapon == 1 || selectedWeapon == 2)
+            {
+                Weapon.ammo = 100;
+            }
+            other.gameObject.SetActive(false);
+        }
+    }
+
 }

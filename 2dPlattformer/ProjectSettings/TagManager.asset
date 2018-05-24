@@ -15,7 +15,19 @@ TagManager:
   - EnemyMove
   - Shield
   - PlayerBullet
+  - ElevatorArena
   - JetpackTrail
+  - Pickup
+  - EnemyAim
+  - EnemyBullet
+  - HealthPickup
+  - WeaponPickup
+  - PlayerWeapon
+  - Arm
+  - GroundEnemy
+  - MachinegunPickup
+  - ShotgunPickup
+  - JetpackPickup
   layers:
   - Default
   - TransparentFX
@@ -52,4 +64,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 71071151
+    locked: 0
+  - name: Enemy
+    uniqueID: 894830967
+    locked: 0
+  - name: Assets
+    uniqueID: 3137140211
+    locked: 0
+  - name: Player
+    uniqueID: 3606720627
     locked: 0

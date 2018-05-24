@@ -36,7 +36,7 @@ public class AirState : State
 
     public override void Update()
     {
-        if (Input.GetAxis("LeftTrigger") != 0 && _controller.playerManager.currentFuel >= 0)
+        if (Input.GetAxis("LeftTrigger") != 0 && _controller.playerManager.currentFuel >= 0 && _controller.playerManager.jetPack==1)
         {
             _controller.TransitionTo<JetpackState>();
         }

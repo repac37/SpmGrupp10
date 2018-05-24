@@ -11,5 +11,6 @@ public class PlayerVariables : ScriptableObject {
 
     [Header("JetPack")]
     public float maxFuel;
-    public float RefuelRate = 0.01f;
+    public float RefuelRate;
+    public float jetPackFuelCost;
 }

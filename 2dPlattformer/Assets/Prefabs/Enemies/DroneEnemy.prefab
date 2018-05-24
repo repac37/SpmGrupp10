@@ -100,7 +100,7 @@ Transform:
   m_GameObject: {fileID: 1160262572878074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.0211563, y: 0.967745, z: -1.4167776}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 0.7333446}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4136633893463134}
   - {fileID: 4412467647661092}
@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66662a30b911b814da3682448565283a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   maxFollowSpeed: 5
   minFollowSpeed: 4
   followDistance: 8
@@ -295,8 +296,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f94e1d0685a06c47959c8013da2b3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
-  spawnEnemy: 0
+  startHealth: 1
+  currentHealth: 0
+  shield: 0
+  hasShield: 0
+  TakeDamage: 1
+  spawnedEnemy: 0
+  rend: {fileID: 23621261992249786}
+  spriteRend: {fileID: 0}
+  mat1: {fileID: 2100000, guid: 62ef7c1da8aa6044ba29ca0187e7a0f4, type: 2}
+  mat2: {fileID: 2100000, guid: fe997f8330aea3b43a7843b22203a468, type: 2}
+  mat3: {fileID: 2100000, guid: 86bbfdd946876364c91b88844f2cb68b, type: 2}
+  mat4: {fileID: 2100000, guid: 7c8aeb4c50d641e4dac38790bdb93b2d, type: 2}
+  healthy: {fileID: 0}
+  dead: {fileID: 0}
+  damaged: {fileID: 0}
+  meleAttack: {fileID: 0}
+  deadGun: {fileID: 0}
+  deathTimer: 0.3
+  damageTimer: 0.1
+  meleCountdown: 0
+  meleCountdownStart: 1
 --- !u!114 &114639142361949064
 MonoBehaviour:
   m_ObjectHideFlags: 1

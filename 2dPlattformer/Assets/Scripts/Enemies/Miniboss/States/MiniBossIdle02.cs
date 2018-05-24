@@ -6,15 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "States/Miniboss/MiniBossIdle02")]
 public class MiniBossIdle02 : State {
 
-    public float shieldDownTime;
-    public bool shield;
-    public Color shieldColor = Color.cyan;
-    public Transform shieldTrigger;
-    public ShieldDownMiniBoss shieldDownMiniBoss;
-    public bool shieldCoroutine;
-    private Renderer _bodyRender;
-    private MiniBossController _controller;
 
+    private MiniBossController _controller;
 
     [Header("Ellipse")]
     public Transform centerPoint;
@@ -29,41 +22,42 @@ public class MiniBossIdle02 : State {
     public float patrolMovementSpeed = 3;
     public float patrolStartWaitTime = 0;
     private float patrolWaitTime;
-   
-  
+
+    public float fireRate = 10;  // The number of bullets fired per second
+    private float nextFire;   // The value of Time.time at the last firing moment
+    public float rotationSpeed = 5;
+    private Transform _aim;
 
     private int _patrolIndex;
     public LayerMask CollisionLayers;
     private bool _IsElipseAttack = false;
     private bool _IsStartPositionSet;
     private int patrolCount;
+    private bool shieldCoroutine;
 
     public override void Initialize(Controller owner)
     {
         _controller = (MiniBossController)owner;
-        Transform _body = _controller.transform.Find("Body");
-        _bodyRender = _body.gameObject.GetComponent<Renderer>();
-        shieldTrigger = _controller.transform.Find("SecondeState");
-        shieldTrigger = shieldTrigger.transform.Find("ShieldTrigger");
-        shieldDownMiniBoss= shieldTrigger.GetComponent<ShieldDownMiniBoss>();
+        _aim = _controller.transform.GetChild(0);
         _patrolIndex = 1;
 
     }
 
     public override void Enter()
     {
-        _bodyRender.material.color = Color.cyan;
-        shieldTrigger.gameObject.SetActive(true);
-        _controller.manager.TakeDamage = false;
-        shieldCoroutine = false;
+        _controller.manager.bodyRender.sprite = _controller.manager.bossSprites[1];
         centerPoint = _controller.PatrolPoints[1].transform;
         patrolWaitTime = patrolStartWaitTime;
+        shieldCoroutine = false;
+        _controller.manager.setTakeDamage(false);
     }
 
     public override void Update()
     {
-        _controller.UpdateHealth();
-        SheildHit();
+        
+        if (_controller.manager.sheild.hitShield == true)
+            SheildHit();
+
         if (_IsElipseAttack)
         {
             ElipseAttack();
@@ -72,42 +66,54 @@ public class MiniBossIdle02 : State {
         {
             PatrolState();
         }
-        _controller.GetState<MiniBossIdle01>().ShootRoutine();
 
-        if (_controller.health == 0)
+        ShootRoutine();
+
+        if (_controller.manager.currentHealth == 0)
             _controller.TransitionTo<DeathState>();
     }
 
-  
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
 
     private void SheildHit()
     {
-        if (shieldDownMiniBoss.isSheild == true)
-        {
-            _bodyRender.material.color = Color.cyan;
-        }
-        else
-        {
-            if (shieldCoroutine) return;
+        if (shieldCoroutine) return;
+        _controller.manager.setTakeDamage(true);
+        _controller.manager.bodyRender.sprite = _controller.manager.bossSprites[0];
+        _controller.StartCoroutine(ShieldDown());
+        shieldCoroutine = true;
 
-            _controller.manager.TakeDamage = true;
-            _bodyRender.material.color = Color.red;
-            _controller.StartCoroutine(ShieldDown());
-            shieldCoroutine = true;
-        }
     }
 
     private IEnumerator ShieldDown()
     {
-        yield return new WaitForSeconds(shieldDownTime);
-        shieldDownMiniBoss.isSheild = true;
-        _controller.manager.TakeDamage = false;
+        yield return new WaitForSeconds(_controller.shieldDownTime);
+        _controller.manager.sheild.hitShield = false;
+        _controller.manager.bodyRender.sprite = _controller.manager.bossSprites[1];
+        _controller.manager.setTakeDamage(false);
         shieldCoroutine = false;
+    }
+
+    public void ShootRoutine()
+    {
+        RotateWeapon();
+        if (Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Shoot();
+        }
+
+    }
+
+    private void RotateWeapon()
+    {
+        Vector3 toTargetVector = _controller.target.position - _aim.transform.position;
+        float zRotation = Mathf.Atan2(toTargetVector.y, toTargetVector.x) * Mathf.Rad2Deg;
+        _aim.transform.rotation = Quaternion.Lerp(_aim.transform.rotation, Quaternion.Euler(0, 0, zRotation), Time.deltaTime * rotationSpeed);
+    }
+
+    private void Shoot()
+    {
+        Instantiate(_controller.BulletPrefab, _aim.position, _aim.rotation);
     }
 
     private void PatrolState()
@@ -140,7 +146,6 @@ public class MiniBossIdle02 : State {
     private void ElipseAttack()
     {
         Debug.Log(_patrolIndex);
-        Debug.Log("elipse");
         clockwise = _patrolIndex == 0 ? true : false;
   
        
@@ -160,7 +165,7 @@ public class MiniBossIdle02 : State {
         if (clockwise)
         {
             OrbitProgress += Time.deltaTime * orbitSpeed;
-            Debug.Log("clockwise" + OrbitProgress);
+           // Debug.Log("clockwise" + OrbitProgress);
             if (OrbitProgress > 0.75f)
             {
                 _IsElipseAttack = false;
@@ -169,7 +174,7 @@ public class MiniBossIdle02 : State {
         if (!clockwise)
         {
             OrbitProgress -= Time.deltaTime * orbitSpeed;
-            Debug.Log("!clockwise" + OrbitProgress);
+           // Debug.Log("!clockwise" + OrbitProgress);
             if (OrbitProgress < 0.25f)
             {
                 _IsElipseAttack = false;

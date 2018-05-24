@@ -72,7 +72,7 @@ public class Ambience : MonoBehaviour
         {
             audioSources[flip].clip = clips[flip];
             audioSources[flip].PlayScheduled(nextEventTime);
-            Debug.Log("Scheduled source " + flip + " to start at time " + nextEventTime);
+           // Debug.Log("Scheduled source " + flip + " to start at time " + nextEventTime);
 
 
             nextEventTime += audioSources[flip].clip.length;
@@ -86,13 +86,13 @@ public class Ambience : MonoBehaviour
             float d = Random.Range(minDelay, maxDelay);
             audioSources[2].PlayDelayed(d);
 
-            Debug.Log("sourse[0] d = " + d);
+            //Debug.Log("sourse[0] d = " + d);
         }
         if (!audioSources[3].isPlaying)
         {
             float d = Random.Range(minDelay, maxDelay);
             audioSources[3].PlayDelayed(d);
-            Debug.Log("sourse[1] d = " + d);
+            //Debug.Log("sourse[1] d = " + d);
         }
 
     }

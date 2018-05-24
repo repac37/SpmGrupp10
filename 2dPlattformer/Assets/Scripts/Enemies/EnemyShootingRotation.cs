@@ -11,7 +11,7 @@ public class EnemyShootingRotation : MonoBehaviour {
 
     private void Start()
     {
-        //objectToHit = GameObject.FindGameObjectWithTag("Player");
+        objectToHit = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

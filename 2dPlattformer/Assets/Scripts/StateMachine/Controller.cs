@@ -25,6 +25,8 @@ public abstract class Controller : MonoBehaviour
         }
     }
 
+
+
     public T GetState<T>()
     {
         Type type = typeof(T);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DronePatrolState : MonoBehaviour
 {
 
-    private Transform player;
+    public Transform player;
     private float speed;
     public float maxFollowSpeed;
     public float minFollowSpeed;

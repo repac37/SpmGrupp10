@@ -28,10 +28,6 @@ public class GroundState : State
 
     private List<Collider2D> _ignoredPlatforms = new List<Collider2D>();
 
-    [Header("Jetpack")]
-    public float reloadJetpack = 1f;
-    private float _JetpackCountDownTimer = 0;
-
     private int _jumps;
     private Vector2 _groundNormal;
     private Vector2 _vectorAlongGround
@@ -51,6 +47,11 @@ public class GroundState : State
     public override void Initialize(Controller owner)
     {
         _controller = (PlayerController)owner;
+        CalculateGravity();
+    }
+
+    private void CalculateGravity()
+    {
         //bestämmer gravitation efter hopp höjden och hopptiden 
         _controller.Gravity = (2 * JumpHeight.Max) / (TimeToJumpApex * TimeToJumpApex);
         //bestämmer hoppet max hastighet
@@ -59,9 +60,8 @@ public class GroundState : State
     }
 
     public override void Enter()
-    {
+    { 
         _jumps = MaxJumps;
-        _controller.playerManager.isRefuel = true;
     }
 
     public override void Update()
@@ -84,7 +84,8 @@ public class GroundState : State
 
 
         UpdateJump();
-        UpdateJetpack();
+        if(_controller.playerManager.jetPack==1)
+            UpdateJetpack();
 
     }
 
@@ -138,7 +139,7 @@ public class GroundState : State
                     }
                     catch (NullReferenceException e)
                     {
-                        Debug.Log("Enemy part did not have MiniBossController");
+                        Debug.Log("Enemy part did not have MiniBossController"+e);
                     }
                 }
 
@@ -224,7 +225,7 @@ public class GroundState : State
 
     public void UpdateJetpack()
     {
-
+        _controller.playerManager.Refuel();
         float VerticalInput = Input.GetAxis("Vertical");
         if (Input.GetAxis("LeftTrigger") == 0 || VerticalInput < 0) return;
         if (_controller.playerManager.currentFuel < _controller.playerManager.playerVar.maxFuel) return;
@@ -234,11 +235,6 @@ public class GroundState : State
     private void TransitionToJetPack()
     {
         _controller.TransitionTo<JetpackState>();
-    }
-
-    public override void Exit()
-    {
-        _controller.playerManager.isRefuel = false;
     }
 
 }

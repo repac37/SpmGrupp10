@@ -25,8 +25,13 @@ public class DroneShoot : MonoBehaviour
     {
         timer = startTimer;
         firePoint = transform.Find("FirePoint");
+        objectToHit = GameObject.FindGameObjectWithTag("Player");
 
+    }
 
+    private void OnEnable()
+    {
+        parent.detected = false;
     }
 
     // Update is called once per frame
@@ -34,7 +39,7 @@ public class DroneShoot : MonoBehaviour
     {
         if (parent.detected)
         {
-            objectToHit = GameObject.FindGameObjectWithTag("Player");
+           
             if (timer > 0)
                 timer -= Time.deltaTime;
         }
@@ -43,7 +48,6 @@ public class DroneShoot : MonoBehaviour
             Shoot();
 
         }
-
     }
 
     void Shoot()
@@ -60,7 +64,13 @@ public class DroneShoot : MonoBehaviour
 
     void Effect()
     {
-        Instantiate(BulletTrailPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = ObjectPooler.sharedInstance.GetPooledObject("EnemyBullet");
+        if (bullet != null)
+        {
+            bullet.transform.position = firePoint.transform.position;
+            bullet.transform.rotation = firePoint.transform.rotation;
+            bullet.SetActive(true);
+        }
     }
 
     void RandomSound(AudioClip[] sounds)

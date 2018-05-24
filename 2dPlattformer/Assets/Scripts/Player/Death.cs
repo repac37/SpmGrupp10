@@ -20,7 +20,9 @@ public class Death : MonoBehaviour
 
             if (other.name == "Player")
             {
-                levelManager.RespawnPlayer();
+                other.GetComponent<PlayerManager>().regularDeath = false;
+                other.GetComponent<PlayerManager>().SetDeathAnimation();
+                //levelManager.RespawnPlayer();
             }
 
         }

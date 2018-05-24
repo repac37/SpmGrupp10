@@ -305,7 +305,15 @@ MonoBehaviour:
   cam: {fileID: 0}
   cameraPosition: {fileID: 0}
   lazer: {fileID: 0}
+  lazer2: {fileID: 0}
   exitLazer: {fileID: 0}
+  exitLazer2: {fileID: 0}
   killcount: 1
+  killcount2: 0
+  savedKillcount: 0
+  savedKillcount2: 0
   arenaCameraSize: 10
   sizeSpeed: 0.1
+  open_close: {fileID: 0}
+  open_closeSound: {fileID: 0}
+  levelManager: {fileID: 0}

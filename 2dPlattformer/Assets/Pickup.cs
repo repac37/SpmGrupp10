@@ -4,26 +4,33 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 
-    public GameObject armed;
-    public GameObject weapon;
+    //public float fallSpeed = 0;
+
+    //private bool isGrounded = false;
+
+    void Start()
+    {
+    }
+
+    void Update()
+    {
+        //if (!isGrounded)
+        //{
+        //    transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
+        //}
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            armed.GetComponentInParent<Armed>().selectedWeapon = 1;
+        //if (other.gameObject.tag == "Floor")
+        //{
+        //    isGrounded = true;
+        //}
 
-            gameObject.SetActive(false);
-
-            Debug.Log("Byta vapen");
-
-            if (armed.GetComponentInParent<Armed>().selectedWeapon == 1)
-            {
-                // weapon.GetComponentInParent<Weapon>().ammo = 100;
-
-                Weapon.ammo = 100;
-            }
-
-        }
+        //if (other.gameObject.tag == "PlayerWeapon" || other.gameObject.tag == "Arm" || other.gameObject.tag == "Player")
+        //{
+        //    isGrounded = false;
+        //}
     }
+
 }

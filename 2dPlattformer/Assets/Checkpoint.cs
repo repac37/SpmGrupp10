@@ -6,10 +6,13 @@ public class Checkpoint : MonoBehaviour {
 
     public LevelManager levelManager;
 
+    public UiManager uiManager;
+
     // Use this for initialization
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        uiManager = FindObjectOfType<UiManager>();
     }
 
     // Update is called once per frame
@@ -23,7 +26,18 @@ public class Checkpoint : MonoBehaviour {
         if (other.name == "Player")
         {
             levelManager.currentCheckPoint = gameObject;
-            Debug.Log("Activated Checkpoint " + transform.position);
+            StartCoroutine(WaitForText());
+            //Debug.Log("Activated Checkpoint " + transform.position);
         }
     }
+
+    IEnumerator WaitForText()
+    {
+        uiManager.checkPointText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2.0f);
+
+        uiManager.checkPointText.gameObject.SetActive(false);
+    }
+
 }

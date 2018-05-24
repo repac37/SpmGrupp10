@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4101124885005462}
   - component: {fileID: 33141279128669664}
-  - component: {fileID: 135895292985912726}
   - component: {fileID: 23247510248246448}
   m_Layer: 0
   m_Name: Crosshair
@@ -83,15 +82,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077792205046134}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &135895292985912726
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1077792205046134}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

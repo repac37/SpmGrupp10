@@ -4,44 +4,45 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UiManager : MonoBehaviour
+
+public class UiManager: MonoBehaviour
 {
     //private PlayerVariables player;
 
 
-    public Slider fuelSlider;
+    //private PlayerVariables player;
+
+
+    //public Slider fuelSlider;
+
     public Text ammoText;
     public Sprite[] healthSprites;
+
+    public Text checkPointText;
 
     public Image healthUI;
     public int hp;
     public float ammo;
-    public float jetfuel = 0;
+    //public float jetfuel = 0;
     public PlayerManager playerManager;
 
 
     // Use this for initialization
     void Start()
     {
-
-
+        playerManager = (PlayerManager)FindObjectOfType(typeof(PlayerManager));
+        if(checkPointText.gameObject!=null)
+            checkPointText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        hp = PlayerManager.currentHealth;
+        hp = PlayerManager.playerCurrentHealth;
 
+        ammo = Gun.ammo;
 
-
-        ammo = Weapon.ammo;
-        jetfuel = playerManager.currentFuel;
-
-
-        fuelSlider.maxValue = playerManager.playerVar.maxFuel;
-        fuelSlider.minValue = 0.0f;
-        fuelSlider.value = jetfuel;
 
 
         if (hp >= 0)
