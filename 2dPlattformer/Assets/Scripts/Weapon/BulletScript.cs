@@ -23,7 +23,14 @@ public class BulletScript : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
 
+        
+
         GameObject hit = other.gameObject;
+
+        if (hit.CompareTag("NewEnemyAI"))
+        {
+            hit.GetComponent<Health>().HitDamage(1);
+        }
 
         if (hit.layer == 8)
         {

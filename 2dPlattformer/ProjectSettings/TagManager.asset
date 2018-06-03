@@ -28,6 +28,7 @@ TagManager:
   - MachinegunPickup
   - ShotgunPickup
   - JetpackPickup
+  - NewEnemyAI
   layers:
   - Default
   - TransparentFX
